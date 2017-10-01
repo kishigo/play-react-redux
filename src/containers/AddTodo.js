@@ -1,0 +1,40 @@
+/**
+ * Created by Kelvin Ishigo on 10/1/17.
+ *
+ * Copyright (c) 2017 Kelvin Ishigo
+ * Licensed under the MIT License. See LICENSE file in the project root for full license information.
+ */
+import React from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from '../actions'
+
+let AddTodo = ({ dispatch }) => {
+	let input
+	
+	return (
+		<div>
+			<form
+				onSubmit={e => {
+					e.preventDefault();
+					if (!input.value.trim()) {
+						return
+					}
+					dispatch(addTodo(input.value));
+					input.value = ''
+				}}
+			>
+				<input
+					ref={node => {
+						input = node
+					}}
+				/>
+				<button type="submit">
+					Add Todo
+				</button>
+			</form>
+		</div>
+	)
+}
+AddTodo = connect()(AddTodo)
+
+export default AddTodo
