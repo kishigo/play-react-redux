@@ -14,6 +14,7 @@ import EditRecipeForm from './EditRecipeForm'
 const App = () => (
 	<div>
 		<header>
+			Redux Driven Links-->
 			<Link to="/">Home</Link>
 			|
 			<Link to="/about-us">About</Link>
