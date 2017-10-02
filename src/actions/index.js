@@ -30,7 +30,17 @@ export const toggleTodo = id => {
 export const ingestRecipe = recipe => {
 	return {
 		type: RecipeTypes.INGEST_RECIPE,
-		recipe
+		recipe: {
+			title: recipe
+		}
+	}
+};
+
+export const highlightRecipe = (id, selected) => {
+	return {
+		type: RecipeTypes.HIGHLIGHT_RECIPE,
+		id: id,
+		selected: selected
 	}
 };
 

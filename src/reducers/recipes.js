@@ -13,9 +13,17 @@ const recipes = (state = [], action) => {
 				...state,
 				{
 					id: state.length,
-					recipe: action.recipe
+					title: action.recipe.title,
+					recipe: action.recipe,
+					selected: false
 				}
 			];
+		case RecipeTypes.HIGHLIGHT_RECIPE:
+			return state.map(recipe =>
+				(recipe.id === action.id)
+				? {...recipe, selected: !recipe.selected}
+				: recipe
+			);
 		default:
 			return state;
 	}

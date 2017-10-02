@@ -6,9 +6,9 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { ingestRecipe } from '../actions'
 
-let AddTodo = ({ dispatch }) => {
+let AddRecipe = ({ dispatch }) => {
 	let input
 	
 	return (
@@ -19,7 +19,7 @@ let AddTodo = ({ dispatch }) => {
 					if (!input.value.trim()) {
 						return
 					}
-					dispatch(addTodo(input.value));
+					dispatch(ingestRecipe(input.value));
 					input.value = ''
 				}}
 			>
@@ -29,12 +29,12 @@ let AddTodo = ({ dispatch }) => {
 					}}
 				/>
 				<button type="submit">
-					Add Todo
+					Add Recipe
 				</button>
 			</form>
 		</div>
 	)
 };
-AddTodo = connect()(AddTodo);
+AddRecipe = connect()(AddRecipe);
 
-export default AddTodo
+export default AddRecipe

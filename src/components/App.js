@@ -10,12 +10,14 @@ import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
 import RecipeFooter from './RecipeFooter'
+import AddRecipe from '../containers/AddRecipe'
 
 const App = () => (
 	<div>
 		<AddTodo />
 		<VisibleTodoList />
 		<Footer />
+		<AddRecipe />
 		<VisibleRecipeList />
 		<RecipeFooter />
 	</div>
