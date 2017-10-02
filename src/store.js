@@ -10,7 +10,9 @@ import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import todoApp from './reducers'
 // Add routing support, copy example @ https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
-
+/**
+ * history for routing
+ */
 export const history = createHistory();
 
 const enhancers = [];
@@ -23,17 +25,22 @@ const composedEnhancers = compose(
 	applyMiddleware(...middleware),
 	...enhancers
 );
-
+/**
+ * Some simple state to help us test
+ * @type {{todos: [*], visibilityFilter: string}}
+ */
 let initialState = {todos:[
 	{id: 0, text: 'Use Redux', completed: false},
 	{id: 1, text: 'Grok Redux Classes',completed: false}],
 	visibilityFilter: "SHOW_ALL"};
-
+/**
+ * Allows explicit configuration of store.
+ * @returns {*}
+ */
 export const configureStore = () => {
 	let store = createStore(todoApp, initialState,composedEnhancers);
 	console.log(store.getState());
 	return store;
 };
 
-//const store = createStore(todoApp, initialState,composedEnhancers);
 export default configureStore;

@@ -14,7 +14,11 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
-
+/**
+ * Create Home page
+ * @param props contains changePage for button
+ * @constructor
+ */
 const Home = props => (
 	<div>
 		<h1>Home</h1>
@@ -28,11 +32,16 @@ const Home = props => (
 		<button onClick={() => props.changePage()}>Go to about page via redux</button>
 	</div>
 );
-
+/**
+ * Not quite sure of all that's going on here.  Dive deeper
+ * @param dispatch
+ */
 const mapDispatchToProps = dispatch => bindActionCreators({
 	changePage: () => push('/about-us')
-}, dispatch)
-
+}, dispatch);
+/**
+ * connect for routing
+ */
 export default connect(
 	null,
 	mapDispatchToProps

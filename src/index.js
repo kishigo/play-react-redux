@@ -10,6 +10,9 @@ import {ConnectedRouter} from 'react-router-redux'
 const target = document.querySelector('#root');
 let store = configureStore();
 
+/**
+ * Top level render with router support
+ */
 ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>

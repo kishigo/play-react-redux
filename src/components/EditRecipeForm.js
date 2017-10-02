@@ -5,14 +5,9 @@
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
 import React from 'react'
-/**
- * Create the About test window
- * @constructor
- */
-const About = () => (
+const EditRecipeForm = () => (
 	<div>
-		<h1>About Us</h1>
-		<p>Hello Medium!</p>
+		<h1>Edit Recipe Form</h1>
 	</div>
 );
-export default About
+export default EditRecipeForm
