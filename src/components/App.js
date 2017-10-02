@@ -11,8 +11,23 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
+import { Route, Link } from 'react-router-dom'
+import Home from './Home'
+import About from './About'
 
-const App = () => (
+let testRoute = true;
+const App = (testRoute) ? () => (
+	<div>
+		<header>
+			<Link to="/">Home</Link>
+			<Link to="/about-us">About</Link>
+		</header>
+		<main>
+			<Route exact path="/" component={Home}/>
+			<Route exact path="/about-us" component={About}/>
+		</main>
+	</div>
+) : () => (
 	<div>
 		<AddTodo />
 		<VisibleTodoList />
@@ -22,5 +37,32 @@ const App = () => (
 		<RecipeFooter />
 	</div>
 );
-
+/*
+if (testRoute) {
+	const App = () => (
+		<div>
+			<header>
+				<Link to="/">Home</Link>
+				<Link to="/about-us">About</Link>
+			</header>
+			<main>
+				<Route exact path="/" component={Home}/>
+				<Route exact path="/about-us" component={About}/>
+			</main>
+		</div>
+	);
+}
+else {
+	const App = () => (
+		<div>
+			<AddTodo />
+			 <VisibleTodoList />
+			 <Footer />
+			 <AddRecipe />
+			 <VisibleRecipeList />
+			 <RecipeFooter />
+		</div>
+	);
+}
+*/
 export default App;

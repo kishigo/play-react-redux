@@ -3,17 +3,36 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux';
-import configureStore from './store';
+import {Provider} from 'react-redux';
+import configureStore, {history} from './store';
+import { ConnectedRouter } from 'react-router-redux'
 
+const target = document.querySelector('#root');
 let store = configureStore();
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
-);
+let testRoute = true;
+if (testRoute) {
+	ReactDOM.render(
+		<Provider store={store}>
+			<ConnectedRouter history={history}>
+				<div>
+					<App />
+				</div>
+			</ConnectedRouter>
+		</Provider>,
+		target
+	);
+}
+else {
+	ReactDOM.render(
+		<Provider store={store}>
+			<ConnectedRouter history={history}>
+			<App />
+			</ConnectedRouter>
+		</Provider>,
+		target
+	);
+}
 
 
 registerServiceWorker();

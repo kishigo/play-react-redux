@@ -8,11 +8,13 @@ import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
 import recipes from './recipes'
+import { routerReducer } from 'react-router-redux'
 
 const todoApp = combineReducers({
 	todos,
 	recipes,
-	visibilityFilter
+	visibilityFilter,
+	routing: routerReducer
 });
 
 export default todoApp;
