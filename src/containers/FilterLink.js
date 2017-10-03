@@ -20,11 +20,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(setVisibilityFilter(ownProps.filter))
 		}
 	}
-}
+};
 
 const FilterLink = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Link)
+)(Link);
 
 export default FilterLink

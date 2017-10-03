@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { ingestRecipe } from '../actions'
 
 let AddRecipe = ({ dispatch }) => {
-	let input
+	let input;
 	
 	return (
 		<div>

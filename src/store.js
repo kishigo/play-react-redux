@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
-import todoApp from './reducers'
+import recipeApp from './reducers'
 // Add routing support, copy example @ https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 /**
  * history for routing
@@ -38,7 +38,7 @@ let initialState = {todos:[
  * @returns {*}
  */
 export const configureStore = () => {
-	let store = createStore(todoApp, initialState,composedEnhancers);
+	let store = createStore(recipeApp, initialState,composedEnhancers);
 	console.log(store.getState());
 	return store;
 };

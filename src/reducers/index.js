@@ -9,12 +9,18 @@ import todos from './todos';
 import visibilityFilter from './visibilityFilter';
 import recipes from './recipes'
 import { routerReducer } from 'react-router-redux'
-
-const todoApp = combineReducers({
+/**
+ * As I barely grok this, each partial reducer specifies a part of the total state shape
+ * because it must furnish a default shape value
+ * Or one can use createReducer where you have to pass an initial state (shape)
+ * Also, reducers are where I would expect DB activity with server to happen
+ * @type {Reducer<S>}
+ */
+const recipeApp = combineReducers({
 	todos,
 	recipes,
 	visibilityFilter,
 	routing: routerReducer
 });
 
-export default todoApp;
+export default recipeApp;
