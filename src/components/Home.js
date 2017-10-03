@@ -25,6 +25,7 @@ const Home = props => (
 		<AddRecipe />
 		<VisibleRecipeList />
 		<RecipeFooter />
+		<h2>Shopping List</h2>
 		<h2>Things to do</h2>
 		<AddTodo />
 		<VisibleTodoList />
