@@ -13,3 +13,9 @@ export const RecipeTypes = {
 	DISPLAY_RECIPE: 'DISPLAY_RECIPE',
 	HIGHLIGHT_RECIPE: 'HIGHLIGHT_RECIPE'
 };
+
+export const ShoppingTypes = {
+	ADD_ITEM: 'ADD_ITEM',
+	DELETE_ITEM: 'DELETE_ITEM',
+	COMPLETE_ITEM: 'COMPLETE_ITEM'
+};

@@ -17,8 +17,8 @@ import { routerReducer } from 'react-router-redux'
  * @type {Reducer<S>}
  */
 const recipeApp = combineReducers({
-	todos,
 	recipes,
+	todos,
 	visibilityFilter,
 	routing: routerReducer
 });

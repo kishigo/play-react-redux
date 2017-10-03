@@ -9,7 +9,7 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import AddTodo from '../containers/AddTodo'
-import Footer from './Footer'
+import TodoFooter from './TodoFooter'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
 import RecipeFooter from './RecipeFooter'
@@ -21,14 +21,14 @@ import AddRecipe from '../containers/AddRecipe'
  */
 const Home = props => (
 	<div>
-		<h1>Home</h1>
-		<p>Welcome home!</p>
-		<AddTodo />
-		<VisibleTodoList />
-		<Footer />
+		<h1>Recipes</h1>
 		<AddRecipe />
 		<VisibleRecipeList />
 		<RecipeFooter />
+		<h2>Things to do</h2>
+		<AddTodo />
+		<VisibleTodoList />
+		<TodoFooter />
 		<button onClick={() => props.changePage()}>Go to about page via redux</button>
 	</div>
 );
