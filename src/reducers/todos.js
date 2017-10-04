@@ -10,8 +10,8 @@ const todos = (state = [], action) => {
 			return [
 				...state,
 				{
-					// id: action.id,
-					id: state.length,
+					id: action.id,
+					//id: state.length,
 					text: action.text,
 					completed: false
 				}

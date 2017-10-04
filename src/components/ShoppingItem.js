@@ -1,5 +1,5 @@
 /**
- * Created by Kelvin Ishigo on 10/1/17.
+ * Created by Kelvin Ishigo on 10/3/17.
  *
  * Copyright (c) 2017 Kelvin Ishigo
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
@@ -7,21 +7,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Todo = ({ onClick, completed, text }) => (
-	<li
-		onClick={onClick}
-		style={{
-			textDecoration: completed ? 'line-through' : 'none'
-		}}
-	>
-		{text}
+const ShoppingItem = ({ onClick, completed, name}) => (
+	<li onClick={onClick}
+	    style={{textDecoration: completed ? 'line-through' : 'none'}}>
+		{name}
 	</li>
 );
 
-Todo.propTypes = {
+ShoppingItem.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	completed: PropTypes.bool.isRequired,
-	text: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired
+	
 };
 
-export default Todo
+export default ShoppingItem

@@ -6,21 +6,22 @@
  */
 import {ShoppingTypes} from '../actions/ActionTypes';
 
-const shopping = (state = [], action) => {
+const shoppingItems = (state = [], action) => {
 	switch (action.type) {
 		case ShoppingTypes.ADD_ITEM:
 			return [
 				...state,
 				{
-					id: state.length,
+					id: action.id,
+					name: action.item.name,
 					item: action.item,
-					selected: false
+					completed: false
 				}
 			];
 		case ShoppingTypes.COMPLETE_ITEM:
 			return state.map(item =>
 				(item.id === action.id)
-					? {...item, selected: !item.selected}
+					? {...item, completed: !item.completed}
 					: item
 			);
 		case ShoppingTypes.DELETE_ITEM:
@@ -29,4 +30,4 @@ const shopping = (state = [], action) => {
 	}
 };
 
-export default recipes
+export default shoppingItems

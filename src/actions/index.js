@@ -6,9 +6,14 @@
  */
 import {RecipeTypes, ShoppingTypes} from './ActionTypes';
 
+let todoId = 0;
+let recipeId = 0;
+let shoppingItemId = 0;
+
 export const addTodo = text => {
 	return {
 		type: 'ADD_TODO',
+		id: todoId++,
 		text
 	}
 };
@@ -30,6 +35,7 @@ export const toggleTodo = id => {
 export const ingestRecipe = recipe => {
 	return {
 		type: RecipeTypes.INGEST_RECIPE,
+		id: recipeId++,
 		recipe: {
 			title: recipe
 		}
@@ -75,6 +81,7 @@ export const displayRecipe = id => {
 export const addShoppingItem = (name, qty, market) => {
 	return {
 		type: ShoppingTypes.ADD_ITEM,
+		id: shoppingItemId,
 		item: {
 			name: name,
 			qty: qty,

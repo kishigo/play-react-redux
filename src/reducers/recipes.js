@@ -12,7 +12,7 @@ const recipes = (state = [], action) => {
 			return [
 				...state,
 				{
-					id: state.length,
+					id: action.id,
 					title: action.recipe.title,
 					recipe: action.recipe,
 					selected: false

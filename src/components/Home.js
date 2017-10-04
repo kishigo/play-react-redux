@@ -12,8 +12,10 @@ import AddTodo from '../containers/AddTodo'
 import TodoFooter from './TodoFooter'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
+import VisibleShoppingList from '../containers/VisibleShoppingList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
+import AddShoppingItem from '../containers/AddShoppingItem'
 /**
  * Create Home page
  * @param props contains changePage for button
@@ -26,6 +28,8 @@ const Home = props => (
 		<VisibleRecipeList />
 		<RecipeFooter />
 		<h2>Shopping List</h2>
+		<AddShoppingItem/>
+		<VisibleShoppingList/>
 		<h2>Things to do</h2>
 		<AddTodo />
 		<VisibleTodoList />
