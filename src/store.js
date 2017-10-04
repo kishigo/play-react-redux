@@ -9,6 +9,8 @@ import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import recipeApp from './reducers'
+import { getNextTodoId  }from './actions'
+
 // Add routing support, copy example @ https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 /**
  * history for routing
@@ -30,8 +32,8 @@ const composedEnhancers = compose(
  * @type {{todos: [*], visibilityFilter: string}}
  */
 let initialState = {todos:[
-	{id: 0, text: 'Use Redux', completed: false},
-	{id: 1, text: 'Grok Redux Classes',completed: false}],
+	{id: getNextTodoId(), text: 'Use Redux', completed: false},
+	{id: getNextTodoId(), text: 'Grok Redux Classes',completed: false}],
 	visibilityFilter: "SHOW_ALL"};
 /**
  * Allows explicit configuration of store.

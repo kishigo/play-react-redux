@@ -26,6 +26,7 @@ const Home = props => (
 		<h1>Recipes</h1>
 		<AddRecipe />
 		<VisibleRecipeList />
+		<button onClick={() => props.gotoCreateRecipe()}>Go to create recipe page</button>
 		<RecipeFooter />
 		<h2>Shopping List</h2>
 		<AddShoppingItem/>
@@ -42,7 +43,8 @@ const Home = props => (
  * @param dispatch
  */
 const mapDispatchToProps = dispatch => bindActionCreators({
-	changePage: () => push('/about-us')
+	changePage: () => push('/about-us'),
+	gotoCreateRecipe: () => push('/create-recipe-form')
 }, dispatch);
 /**
  * connect for routing

@@ -10,10 +10,34 @@ let todoId = 0;
 let recipeId = 0;
 let shoppingItemId = 0;
 
+// export external generators of unique id in case initial state is required
+// This guarantees consistency in id values between initial and normallly added items
+/**
+ * Allow access to the private todoId by initial state
+ * @returns {number}
+ */
+export const getNextTodoId = () => {
+	return todoId++;
+};
+/**
+ * Allow access to the private recipeId by initial state
+ * @returns {number}
+ */
+export const getNextRecipeId = () => {
+	return recipeId++;
+};
+/**
+ * Allow access to the private shoppingItemId by initial state
+ * @returns {number}
+ */
+export const getNextShoppingItemId = () => {
+	return shoppingItemId++;
+};
+
 export const addTodo = text => {
 	return {
 		type: 'ADD_TODO',
-		id: todoId++,
+		id: getNextTodoId(),
 		text
 	}
 };
@@ -35,7 +59,7 @@ export const toggleTodo = id => {
 export const ingestRecipe = recipe => {
 	return {
 		type: RecipeTypes.INGEST_RECIPE,
-		id: recipeId++,
+		id: getNextRecipeId(),
 		recipe: {
 			title: recipe
 		}
@@ -81,7 +105,7 @@ export const displayRecipe = id => {
 export const addShoppingItem = (name, qty, market) => {
 	return {
 		type: ShoppingTypes.ADD_ITEM,
-		id: shoppingItemId,
+		id: getNextShoppingItemId(),
 		item: {
 			name: name,
 			qty: qty,

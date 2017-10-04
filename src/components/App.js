@@ -10,16 +10,19 @@ import Home from './Home'
 import About from './About'
 import AddRecipeForm from './AddRecipeForm'
 import EditRecipeForm from './EditRecipeForm'
+import CreateRecipeForm from './CreateRecipeForm'
 
 const App = () => (
 	<div>
 		<header>
-			Redux Driven Links-->
+			Links-->
 			<Link to="/">Home</Link>
 			|
 			<Link to="/about-us">About</Link>
 			|
 			<Link to="/add-recipe-form">Add Recipe Form</Link>
+			|
+			<Link to="/create-recipe-form">Create Recipe Form</Link>
 			|
 			<Link to="/edit-recipe-form">Edit Recipe Form</Link>
 		</header>
@@ -27,6 +30,7 @@ const App = () => (
 			<Route exact path="/" component={Home}/>
 			<Route exact path="/about-us" component={About}/>
 			<Route exact path="/add-recipe-form" component={AddRecipeForm}/>
+			<Route exact path="/create-recipe-form" component={CreateRecipeForm}/>
 			<Route exact path="/edit-recipe-form" component={EditRecipeForm}/>
 		</main>
 	</div>

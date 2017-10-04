@@ -11,7 +11,6 @@ const todos = (state = [], action) => {
 				...state,
 				{
 					id: action.id,
-					//id: state.length,
 					text: action.text,
 					completed: false
 				}
