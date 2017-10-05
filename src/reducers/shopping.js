@@ -14,6 +14,8 @@ const shoppingItems = (state = [], action) => {
 				{
 					id: action.id,
 					name: action.item.name,
+					qty: action.item.qty,
+					market: action.item.market,
 					item: action.item,
 					completed: false
 				}

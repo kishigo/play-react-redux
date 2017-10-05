@@ -5,36 +5,66 @@
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
 import React from 'react'
-import { connect } from 'react-redux'
-import { addShoppingItem } from '../actions'
+import {connect} from 'react-redux'
+import {addShoppingItem} from '../actions'
 
-let AddShoppingItem = ({ dispatch }) => {
-	let input;
+let labelStyle = {
+	display: "inline-block",
+	float: "left",
+	clear: "left",
+	width: "5em"
+};
+
+let AddShoppingItem = ({dispatch}) => {
+	let shopping_item_name;
+	let shopping_item_qty;
+	let market_name;
 	
 	return (
 		<div>
 			<form
 				onSubmit={e => {
 					e.preventDefault();
-					if (!input.value.trim()) {
+					if (!shopping_item_name.value.trim()) {
 						return
 					}
-					dispatch(addShoppingItem(input.value, 0, 'Jons'));
-					input.value = ''
+					dispatch(addShoppingItem(shopping_item_name.value, shopping_item_qty.value, market_name.value));
+					shopping_item_name.value = '';
+					shopping_item_qty.value = '';
+					market_name.value = '';
 				}}
 			>
-				<input
+				<label style={labelStyle}>item:</label><input
+				type="text"
+				name="item"
+				ref={node => {
+					shopping_item_name = node
+				}}
+			/>
+				<br/>
+					<label style={labelStyle}>qty: </label><input
+					type="text"
+					name="item"
 					ref={node => {
-						input = node
+						shopping_item_qty = node
 					}}
 				/>
-				<button type="submit">
-					Add Shopping Item
-				</button>
+					<br/>
+				<label style={labelStyle}>market:</label> <input
+						type="text"
+						name="item"
+						ref={node => {
+							market_name = node
+						}}
+					/>
+						<br/>
+							<button type="submit">
+								Add Shopping Item
+							</button>
 			</form>
 		</div>
 	)
-};
-AddShoppingItem = connect()(AddShoppingItem);
-
-export default AddShoppingItem
+	};
+	AddShoppingItem = connect()(AddShoppingItem);
+	
+	export default AddShoppingItem

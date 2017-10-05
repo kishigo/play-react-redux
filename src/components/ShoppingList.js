@@ -21,6 +21,8 @@ ShoppingList.propTypes = {
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
 			name: PropTypes.string.isRequired,
+			qty: PropTypes.string.isRequired,
+			market: PropTypes.string.isRequired,
 			completed: PropTypes.bool.isRequired
 		}).isRequired
 	).isRequired,
