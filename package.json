@@ -1,5 +1,5 @@
 {
-  "name": "my-react-app-again",
+  "name": "recipes-react-redux",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
