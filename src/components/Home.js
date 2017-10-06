@@ -16,36 +16,47 @@ import VisibleShoppingList from '../containers/VisibleShoppingList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
 import AddShoppingItem from '../containers/AddShoppingItem'
+import {clearShoppingList} from '../actions'
+
+let myDispatch;
+
 /**
  * Create Home page
  * @param props contains changePage for button
  * @constructor
  */
-const Home = props => (
-	<div>
-		<h1>Recipes</h1>
-		<AddRecipe />
-		<VisibleRecipeList />
-		<button onClick={() => props.gotoCreateRecipe()}>Go to create recipe page</button>
-		<RecipeFooter />
-		<h2>Shopping List</h2>
-		<AddShoppingItem/>
-		<VisibleShoppingList/>
-		<h2>Things to do</h2>
-		<AddTodo />
-		<VisibleTodoList />
-		<TodoFooter />
-		<button onClick={() => props.changePage()}>Go to about page via redux</button>
-	</div>
-);
+const Home = props => {
+	console.log(props);
+	return (
+		<div>
+			<h1>Recipes</h1>
+			<AddRecipe />
+			<VisibleRecipeList />
+			<button onClick={() => props.gotoCreateRecipe()}>Go to create recipe page</button>
+			<RecipeFooter />
+			<h2>Shopping List</h2>
+			<AddShoppingItem/>
+			<button onClick={() => myDispatch(clearShoppingList())}>Clear shopping list</button>
+			<VisibleShoppingList/>
+			<h2>Things to do</h2>
+			<AddTodo />
+			<VisibleTodoList />
+			<TodoFooter />
+			<button onClick={() => props.changePage()}>Go to about page via redux</button>
+		</div>
+	);
+};
 /**
  * Not quite sure of all that's going on here.  Dive deeper
  * @param dispatch
  */
-const mapDispatchToProps = dispatch => bindActionCreators({
-	changePage: () => push('/about-us'),
-	gotoCreateRecipe: () => push('/create-recipe-form')
-}, dispatch);
+const mapDispatchToProps = dispatch => {
+	myDispatch = dispatch;
+	return bindActionCreators({
+		changePage: () => push('/about-us'),
+		gotoCreateRecipe: () => push('/create-recipe-form')
+	}, dispatch);
+};
 /**
  * connect for routing
  */

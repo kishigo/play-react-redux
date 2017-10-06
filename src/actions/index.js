@@ -121,6 +121,12 @@ export const deleteShoppingItem = id => {
 	}
 };
 
+export const clearShoppingList = () => {
+	return {
+		type: ShoppingTypes.CLEAR_LIST
+	}
+};
+
 export const completeShoppingItem = id => {
 	return {
 		type: ShoppingTypes.COMPLETE_ITEM,

@@ -34,9 +34,14 @@ const shoppingItems = (state = [], action) => {
 					: item
 			);
 		case ShoppingTypes.DELETE_ITEM:
+			// filter out a single item
 			return state.filter((item) => (item.id !== action.id));
 		case ShoppingTypes.DELETE_COMPLETED_ITEMS:
+			// filter out all completed items
 			return state.filter((item) => (!item.completed));
+		case ShoppingTypes.CLEAR_LIST:
+			// return empty list
+			return [];
 		default:
 			return state;
 	}
