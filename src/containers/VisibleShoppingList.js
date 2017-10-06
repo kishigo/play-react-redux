@@ -9,6 +9,12 @@ import { completeShoppingItem } from '../actions'
 import ShoppingList from '../components/ShoppingList'
 import {ShoppingTypes} from '../actions/ActionTypes'
 
+/**
+ * map filter over shoppingItems
+ * @param shoppingItems
+ * @param filter
+ * @returns {*}
+ */
 const getVisibleShoppingItems = (shoppingItems, filter) => {
 	switch (filter) {
 		case ShoppingTypes.SHOW_ALL:
@@ -21,13 +27,21 @@ const getVisibleShoppingItems = (shoppingItems, filter) => {
 			return shoppingItems;
 	}
 };
-
+/**
+ * api entry
+ * @param state
+ * @returns {{shoppingItems: *}}
+ */
 const mapStateToProps = state => {
 	return {
 		shoppingItems: getVisibleShoppingItems(state.shoppingItems, state.shoppingVisibilityFilter)
 	}
 };
-
+/**
+ * api entry
+ * @param state
+ * @returns {{shoppingItems: *}}
+ */
 const mapDispatchToProps = dispatch => {
 	return {
 		onShoppingItemClick: (id, selected) => {
@@ -35,7 +49,9 @@ const mapDispatchToProps = dispatch => {
 		}
 	}
 };
-
+/**
+ * redux api for connection
+ */
 const VisibleShoppingList = connect(
 	mapStateToProps,
 	mapDispatchToProps

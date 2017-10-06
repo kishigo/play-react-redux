@@ -7,7 +7,10 @@
 import React from 'react'
 import ShoppingListFilterLink from '../containers/ShoppingListFilterLink'
 import { ShoppingTypes } from '../actions/ActionTypes'
-
+/**
+ * Component constructor for Shopping List filter
+ * @constructor
+ */
 const ShoppingListFooter = () => (
 	<p>
 		Show:
