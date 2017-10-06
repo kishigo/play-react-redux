@@ -7,14 +7,24 @@
 import { connect } from 'react-redux'
 import { completeShoppingItem } from '../actions'
 import ShoppingList from '../components/ShoppingList'
+import {ShoppingTypes} from '../actions/ActionTypes'
 
 const getVisibleShoppingItems = (shoppingItems, filter) => {
-	return shoppingItems;
+	switch (filter) {
+		case ShoppingTypes.SHOW_ALL:
+			return shoppingItems;
+		case ShoppingTypes.SHOW_COMPLETED:
+			return shoppingItems.filter(t => t.completed);
+		case ShoppingTypes.SHOW_ACTIVE:
+			return shoppingItems.filter(t => !t.completed);
+		default:
+			return shoppingItems;
+	}
 };
 
 const mapStateToProps = state => {
 	return {
-		shoppingItems: getVisibleShoppingItems(state.shoppingItems, state.filter)
+		shoppingItems: getVisibleShoppingItems(state.shoppingItems, state.shoppingVisibilityFilter)
 	}
 };
 

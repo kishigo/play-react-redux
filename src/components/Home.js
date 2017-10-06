@@ -10,13 +10,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import AddTodo from '../containers/AddTodo'
 import TodoFooter from './TodoFooter'
+import ShoppingListFooter from './ShoppingListFooter'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleRecipeList from '../containers/VisibleRecipeList'
 import VisibleShoppingList from '../containers/VisibleShoppingList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
 import AddShoppingItem from '../containers/AddShoppingItem'
-import {clearShoppingList} from '../actions'
+import {clearCompletedShoppingItems, clearShoppingList} from '../actions'
 
 let myDispatch;
 
@@ -36,8 +37,10 @@ const Home = props => {
 			<RecipeFooter />
 			<h2>Shopping List</h2>
 			<AddShoppingItem/>
+			<button onClick={() => myDispatch(clearCompletedShoppingItems())}>Clear completed items</button>
 			<button onClick={() => myDispatch(clearShoppingList())}>Clear shopping list</button>
 			<VisibleShoppingList/>
+			<ShoppingListFooter />
 			<h2>Things to do</h2>
 			<AddTodo />
 			<VisibleTodoList />

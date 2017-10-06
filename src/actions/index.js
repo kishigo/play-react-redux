@@ -121,6 +121,12 @@ export const deleteShoppingItem = id => {
 	}
 };
 
+export const clearCompletedShoppingItems = () => {
+	return {
+		type: ShoppingTypes.DELETE_COMPLETED_ITEMS
+	}
+};
+
 export const clearShoppingList = () => {
 	return {
 		type: ShoppingTypes.CLEAR_LIST
@@ -133,3 +139,11 @@ export const completeShoppingItem = id => {
 		id
 	}
 };
+
+export const setShoppingListVisibilityFilter = filter => {
+	return {
+		type: ShoppingTypes.SET_VISIBILITY_FILTER,
+		filter
+	}
+};
+

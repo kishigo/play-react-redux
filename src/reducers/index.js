@@ -7,6 +7,7 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
+import shoppingVisibilityFilter from './shoppingVisibilityFilter'
 import recipes from './recipes'
 import shoppingItems from './shopping'
 import { routerReducer } from 'react-router-redux'
@@ -22,6 +23,7 @@ const recipeApp = combineReducers({
 	shoppingItems,
 	todos,
 	visibilityFilter,
+	shoppingVisibilityFilter,
 	routing: routerReducer
 });
 
