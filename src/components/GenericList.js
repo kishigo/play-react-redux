@@ -7,7 +7,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from './Item'
-
+/**
+ * Presentational component to represent a basic list of items
+ * @param items - list of items, must have {id, text, selected} attributes
+ * @param onItemClick - action on item when clicked
+ * @constructor
+ */
 const GenericList = ({ items, onItemClick }) => (
 	<ul>
 		{items.map(item => (
@@ -15,7 +20,10 @@ const GenericList = ({ items, onItemClick }) => (
 		))}
 	</ul>
 );
-
+/**
+ * defines the required shape
+ * @type {{items: *, onItemClick: *}}
+ */
 GenericList.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
