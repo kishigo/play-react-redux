@@ -6,21 +6,25 @@
  */
 import { connect } from 'react-redux'
 import { highlightRecipe } from '../actions'
-import RecipeList from '../components/RecipeList'
+import GenericList from '../components/GenericList'
 
 const getVisibleRecipes = (recipes, filter) => {
-	return recipes;
+	// Create properly shaped list
+	// {id, text, selected} from inbound state {id, title, completed}
+	let newRecipes = recipes.map(recipe => ({id: recipe.id, text: recipe.title, selected: recipe.selected}));
+	return newRecipes;
 };
 
 const mapStateToProps = state => {
 	return {
-		recipes: getVisibleRecipes(state.recipes, state.filter)
+//		recipes: getVisibleRecipes(state.recipes, state.filter)
+		items: getVisibleRecipes(state.recipes, state.filter)
 	}
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onRecipeClick: (id, selected) => {
+		onItemClick: (id, selected) => {
 			dispatch(highlightRecipe(id, selected));
 		}
 	}
@@ -29,6 +33,6 @@ const mapDispatchToProps = dispatch => {
 const VisibleRecipeList = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(RecipeList);
+)(GenericList);
 
 export default VisibleRecipeList

@@ -7,17 +7,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Recipe = ({ onClick, selected, title}) => (
+const Item = ({ onClick, selected, text}) => (
 	<li onClick={onClick}
 	    style={{textDecoration: selected ? 'line-through' : 'none'}}>
-		{title}
+		{text}
 	</li>
 );
 
-Recipe.propTypes = {
+Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	selected: PropTypes.bool.isRequired,
-	title: PropTypes.string.isRequired
+	text: PropTypes.string.isRequired
 	
 };
-export default Recipe
+export default Item

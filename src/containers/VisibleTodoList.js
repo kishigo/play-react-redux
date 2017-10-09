@@ -6,30 +6,30 @@
  */
 import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
-import TodoList from '../components/TodoList'
+import GenericList from '../components/GenericList'
 
 const getVisibleTodos = (todos, filter) => {
 	switch (filter) {
 		case 'SHOW_ALL':
-			return todos;
+			return todos.map(item => ({id: item.id, text: item.text, selected: item.completed}));
 		case 'SHOW_COMPLETED':
-			return todos.filter(t => t.completed);
+			return todos.filter(t => t.completed).map(item => ({id: item.id, text: item.text, selected: item.completed}));
 		case 'SHOW_ACTIVE':
-			return todos.filter(t => !t.completed);
+			return todos.filter(t => !t.completed).map(item => ({id: item.id, text: item.text, selected: item.completed}));
 		default:
-			return todos;
+			return todos.map(item => ({id: item.id, text: item.text, selected: item.completed}));
 	}
 };
 
 const mapStateToProps = state => {
 	return {
-		todos: getVisibleTodos(state.todos, state.visibilityFilter)
+		items: getVisibleTodos(state.todos, state.visibilityFilter)
 	}
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onTodoClick: id => {
+		onItemClick: id => {
 			dispatch(toggleTodo(id));
 		}
 	}
@@ -38,6 +38,6 @@ const mapDispatchToProps = dispatch => {
 const VisibleTodoList = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(TodoList);
+)(GenericList);
 
 export default VisibleTodoList;

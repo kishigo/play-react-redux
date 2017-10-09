@@ -6,9 +6,20 @@
  */
 import { connect } from 'react-redux'
 import { completeShoppingItem } from '../actions'
-import ShoppingList from '../components/ShoppingList'
+import GenericList from '../components/GenericList'
 import {ShoppingTypes} from '../actions/ActionTypes'
 
+const buildTextPart = item => (item.qty + ' - ' + item.name + ' @ ' + item.market);
+const buildItem = item => ({id: item.id, text: buildTextPart(item), selected: item.completed, market: item.market});
+const compareByMarket = (a, b) => {
+	if (a.market < b.market) {
+		return -1;
+	}
+	else if (a.market > b.market) {
+		return 1;
+	}
+	return 0;
+};
 /**
  * map filter over shoppingItems
  * @param shoppingItems
@@ -18,13 +29,13 @@ import {ShoppingTypes} from '../actions/ActionTypes'
 const getVisibleShoppingItems = (shoppingItems, filter) => {
 	switch (filter) {
 		case ShoppingTypes.SHOW_ALL:
-			return shoppingItems;
+			return shoppingItems.map(item => (buildItem(item))).sort(compareByMarket);
 		case ShoppingTypes.SHOW_COMPLETED:
-			return shoppingItems.filter(t => t.completed);
+			return shoppingItems.filter(t => t.completed).map(item => (buildItem(item))).sort(compareByMarket);
 		case ShoppingTypes.SHOW_ACTIVE:
-			return shoppingItems.filter(t => !t.completed);
+			return shoppingItems.filter(t => !t.completed).map(item => (buildItem(item))).sort(compareByMarket);
 		default:
-			return shoppingItems;
+			return shoppingItems.map(item => (buildItem(item))).sort(compareByMarket);
 	}
 };
 /**
@@ -34,7 +45,7 @@ const getVisibleShoppingItems = (shoppingItems, filter) => {
  */
 const mapStateToProps = state => {
 	return {
-		shoppingItems: getVisibleShoppingItems(state.shoppingItems, state.shoppingVisibilityFilter)
+		items: getVisibleShoppingItems(state.shoppingItems, state.shoppingVisibilityFilter)
 	}
 };
 /**
@@ -44,7 +55,7 @@ const mapStateToProps = state => {
  */
 const mapDispatchToProps = dispatch => {
 	return {
-		onShoppingItemClick: (id, selected) => {
+		onItemClick: (id, selected) => {
 			dispatch(completeShoppingItem(id, selected));
 		}
 	}
@@ -55,6 +66,6 @@ const mapDispatchToProps = dispatch => {
 const VisibleShoppingList = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ShoppingList);
+)(GenericList);
 
 export default VisibleShoppingList

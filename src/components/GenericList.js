@@ -6,25 +6,25 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Recipe from './Recipe'
+import Item from './Item'
 
-const RecipeList = ({ recipes, onRecipeClick }) => (
+const GenericList = ({ items, onItemClick }) => (
 	<ul>
-		{recipes.map(recipe => (
-			<Recipe key={recipe.id} {...recipe} onClick={() => onRecipeClick(recipe.id)} />
+		{items.map(item => (
+			<Item key={item.id} {...item} onClick={() => onItemClick(item.id)} />
 		))}
 	</ul>
 );
 
-RecipeList.propTypes = {
-	recipes: PropTypes.arrayOf(
+GenericList.propTypes = {
+	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
-			title: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired,
 			selected: PropTypes.bool.isRequired
 		}).isRequired
 	).isRequired,
-	onRecipeClick: PropTypes.func.isRequired
+	onItemClick: PropTypes.func.isRequired
 };
 
-export default RecipeList
+export default GenericList
