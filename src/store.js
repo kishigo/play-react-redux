@@ -37,8 +37,11 @@ let initialState = {todos:[
 	{id: getNextTodoId(), text: 'Use Redux', completed: false},
 	{id: getNextTodoId(), text: 'Grok Redux Classes',completed: false}],
 	recipes:[
-		{id: getNextRecipeId(), title: 'stew', selected: false, ingredients:[ingredient_1, ingredient_2]},
-		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: [ingredient_1]}],
+		{id: getNextRecipeId(), title: 'stew', selected: false, ingredients:[
+			{id: 1, name: 'eggs', qty: '18', selected: false},
+			{id: 2, name: 'butter', qty: '1 lb', completed: false}
+		]},
+		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: []}],
 	ingredients:[
 		{id: ingredient_1, name: 'eggs', qty: '18', completed: false},
 		{id: ingredient_2, name: 'butter', qty: '1 lb', completed: false}],
