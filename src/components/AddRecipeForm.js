@@ -5,9 +5,12 @@
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
 import React from 'react'
+import VisibleIngredientsList from '../containers/VisibleIngredientsList'
+
 const AddRecipeForm = () => (
 	<div>
 		<h1>Add Recipe Form</h1>
+		<VisibleIngredientsList/>
 	</div>
 );
 export default AddRecipeForm

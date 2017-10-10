@@ -9,7 +9,7 @@ import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import recipeApp from './reducers'
-import { getNextTodoId, getNextRecipeId  }from './actions'
+import { getNextTodoId, getNextRecipeId, getNextIngredientItemId  } from './actions'
 
 // Add routing support, copy example @ https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 /**
@@ -35,8 +35,11 @@ let initialState = {todos:[
 	{id: getNextTodoId(), text: 'Use Redux', completed: false},
 	{id: getNextTodoId(), text: 'Grok Redux Classes',completed: false}],
 	recipes:[
-		{id: getNextRecipeId(), title: 'stew', completed: false},
-		{id: getNextRecipeId(), title: 'apple pie', completed: false}],
+		{id: getNextRecipeId(), title: 'stew', selected: false},
+		{id: getNextRecipeId(), title: 'apple pie', selected: false}],
+	ingredients:[
+		{id: getNextIngredientItemId(), name: 'eggs', qty: '18', completed: false},
+		{id: getNextIngredientItemId(), name: 'butter', qty: '1 lb', completed: false}],
 	visibilityFilter: "SHOW_ALL"};
 /**
  * Allows explicit configuration of store.

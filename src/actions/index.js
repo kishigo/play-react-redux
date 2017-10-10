@@ -4,11 +4,12 @@
  * Copyright (c) 2017 Kelvin Ishigo
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
-import {RecipeTypes, ShoppingTypes} from './ActionTypes';
+import {RecipeTypes, ShoppingTypes, IngredientTypes} from './ActionTypes';
 
 let todoId = 0;
 let recipeId = 0;
 let shoppingItemId = 0;
+let ingredientItemId = 0;
 
 // export external generators of unique id in case initial state is required
 // This guarantees consistency in id values between initial and normallly added items
@@ -33,6 +34,8 @@ export const getNextRecipeId = () => {
 export const getNextShoppingItemId = () => {
 	return shoppingItemId++;
 };
+
+export const getNextIngredientItemId = () => (ingredientItemId++);
 
 export const addTodo = text => {
 	return {
@@ -147,3 +150,20 @@ export const setShoppingListVisibilityFilter = filter => {
 	}
 };
 
+export const addIngredientItem = (name, qty) => {
+	return {
+		type: IngredientTypes.ADD_ITEM,
+		id: getNextIngredientItemId(),
+		item: {
+			name: name,
+			qty: qty,
+		}
+	}
+};
+
+export const completeIngredientItem = id => {
+	return {
+		type: IngredientTypes.COMPLETE_ITEM,
+		id
+	}
+};
