@@ -31,15 +31,17 @@ const composedEnhancers = compose(
  * Some simple state to help us test
  * @type {{todos: [*], visibilityFilter: string}}
  */
+let ingredient_1 = getNextIngredientItemId();
+let ingredient_2 = getNextIngredientItemId();
 let initialState = {todos:[
 	{id: getNextTodoId(), text: 'Use Redux', completed: false},
 	{id: getNextTodoId(), text: 'Grok Redux Classes',completed: false}],
 	recipes:[
-		{id: getNextRecipeId(), title: 'stew', selected: false},
-		{id: getNextRecipeId(), title: 'apple pie', selected: false}],
+		{id: getNextRecipeId(), title: 'stew', selected: false, ingredients:[ingredient_1, ingredient_2]},
+		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: [ingredient_1]}],
 	ingredients:[
-		{id: getNextIngredientItemId(), name: 'eggs', qty: '18', completed: false},
-		{id: getNextIngredientItemId(), name: 'butter', qty: '1 lb', completed: false}],
+		{id: ingredient_1, name: 'eggs', qty: '18', completed: false},
+		{id: ingredient_2, name: 'butter', qty: '1 lb', completed: false}],
 	visibilityFilter: "SHOW_ALL"};
 /**
  * Allows explicit configuration of store.
