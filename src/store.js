@@ -43,8 +43,8 @@ let initialState = {todos:[
 		]},
 		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: []}],
 	ingredients:[
-		{id: ingredient_1, name: 'eggs', qty: '18', completed: false},
-		{id: ingredient_2, name: 'butter', qty: '1 lb', completed: false}],
+		{id: ingredient_1, name: 'eggs', qty: '18', selected: false, type: 'dairy'},
+		{id: ingredient_2, name: 'boneless skinless chicken breast', qty: '1 lb', selected: false, type: 'meat'}],
 	visibilityFilter: "SHOW_ALL"};
 /**
  * Allows explicit configuration of store.

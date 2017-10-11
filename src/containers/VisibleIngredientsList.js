@@ -6,11 +6,10 @@
  */
 import { connect } from 'react-redux'
 import { completeIngredientItem } from '../actions'
-import GenericList from '../components/GenericList'
+import IngredientsList from '../components/IngredientsList'
 import {IngredientTypes} from '../actions/ActionTypes'
 
-const buildTextPart = item => (item.qty + ' - ' + item.name);
-const buildItem = item => ({id: item.id, text: buildTextPart(item), selected: item.completed});
+const buildItem = item => ({id: item.id, qty: item.qty, name: item.name, selected: item.selected, type: item.type});
 /**
  * map filter over ingredientItems
  * @param ingredientItems
@@ -22,9 +21,9 @@ const getVisibleIngredientItems = (ingredientItems, filter) => {
 		case IngredientTypes.SHOW_ALL:
 			return ingredientItems.map(item => (buildItem(item)));
 		case IngredientTypes.SHOW_COMPLETED:
-			return ingredientItems.filter(t => t.completed).map(item => (buildItem(item)));
+			return ingredientItems.filter(t => t.selected).map(item => (buildItem(item)));
 		case IngredientTypes.SHOW_ACTIVE:
-			return ingredientItems.filter(t => !t.completed).map(item => (buildItem(item)));
+			return ingredientItems.filter(t => !t.selected).map(item => (buildItem(item)));
 		default:
 			return ingredientItems.map(item => (buildItem(item)));
 	}
@@ -36,7 +35,7 @@ const getVisibleIngredientItems = (ingredientItems, filter) => {
  */
 const mapStateToProps = state => {
 	return {
-		items: getVisibleIngredientItems(state.ingredients, state.ingredientVisibilityFilter)
+		ingredients: getVisibleIngredientItems(state.ingredients, state.ingredientVisibilityFilter)
 	}
 };
 /**
@@ -57,6 +56,6 @@ const mapDispatchToProps = dispatch => {
 const VisibleIngredientList = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(GenericList);
+)(IngredientsList);
 
 export default VisibleIngredientList

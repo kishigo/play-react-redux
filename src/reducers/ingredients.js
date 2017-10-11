@@ -11,7 +11,7 @@ import {IngredientTypes} from '../actions/ActionTypes';
  * @param action - supported actions for this state slice
  * @returns {*} - new state or unchanged original
  */
-const ingredientItems = (state = [], action) => {
+const ingredients = (state = [], action) => {
 	switch (action.type) {
 		case IngredientTypes.ADD_ITEM:
 			// This defines the actual shape of the state item in the array
@@ -29,7 +29,7 @@ const ingredientItems = (state = [], action) => {
 			// find the item and toggle the completed flag
 			return state.map(item =>
 				(item.id === action.id)
-					? {...item, completed: !item.completed}
+					? {...item, selected: !item.selected}
 					: item
 			);
 		case IngredientTypes.DELETE_ITEM:
@@ -46,4 +46,4 @@ const ingredientItems = (state = [], action) => {
 	}
 };
 
-export default ingredientItems;
+export default ingredients;
