@@ -7,7 +7,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Ingredient from './Ingredient'
-
+/**
+ * Stateless react component defined as a functional component
+ * http://www.zsoltnagy.eu/container-components-and-stateless-functional-components-in-react/
+ * 
+ * @param ingredients
+ * @param onItemClick
+ * @constructor
+ */
 const IngredientsList = ({ingredients, onItemClick}) => (
 	<ul>
 		{ingredients.map(ingredient => (

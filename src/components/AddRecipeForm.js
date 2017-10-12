@@ -16,22 +16,24 @@ import TestIngredientsList from './TestIngredientsList'
 class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
-		this.state = {recipeId: -1, ingredients : []};
+		this.state = {recipeId: 0, ingredients : []};
 		console.log('AddRecipeForm.constructor: state: ' + this.state);
 	}
-	/**
-	 * augment object with ingredients and initialize to silly value
-	 * so we can test correctness
-	 */
-	componentWillMount() {
-		this.ingredients = [{qty: '1C', name: 'Flour', type: 'any', selected: false}];
-	}
 	
+	/**
+	 * callback from the AddIngredient presentational component
+	 * currently set up for local state.  If we wanted to use redux, we would use a passed in
+	 * function from a container that would dispatch, or we might turn this into a container
+	 * by going pure functional and enhancing the function via the redux connect() transformer
+	 * @param ingredient
+	 */
 	addIngredient = (ingredient) => {
 		console.log('addIngredient: qty: ' + ingredient.qty + ' | item: ' + ingredient.name + ' | type: ' + ingredient.type );
 		this.setState((prevState, props) => {
 			console.log('prevState: ' + prevState + ', props: ' + props);
+			ingredient = {...ingredient, id: prevState.recipeId, selected: false};
 			return {
+				recipeId: prevState.recipeId++,
 				ingredients: prevState.ingredients.concat([ingredient])
 			};
 		});
@@ -40,7 +42,7 @@ class AddRecipeForm extends React.Component {
 	};
 	
 	markIngredient = (id) => {
-		console.log('markIngredient');
+		console.log('markIngredient[' + id + ']');
 	};
 	
 	/**

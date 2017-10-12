@@ -9,6 +9,9 @@ import Ingredient from './Ingredient'
 /**
  * Learning... by inheriting from React.Component, this will have state and props
  * Passing args to the jsx <TestIngredientsList xxx={foo} yyy={bar}/> => this.props.xxx, this.props.yyy
+ * NOTE: This is inefficient for a stateless React component and the pure functional form is preferred
+ * see IngredientsList.js and its usage in AddRecipeForm.js where it is driven by local state in AddRecipeForm.
+ * Then see usage in VisibleIngredientsList.js where it is driven by redux state.
  */
 class TestIngredientsList extends React.Component {
 	render() {
