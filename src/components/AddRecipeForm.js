@@ -54,6 +54,15 @@ class AddRecipeForm extends React.Component {
 		return (
 			<div>
 				<h1>Add Recipe Form</h1>
+				<input id="upload" ref="upload" type="file" accept="image/*"
+				       onChange={(event)=> {
+					       this.readFile(event)
+				       }}
+				       onClick={(event)=> {
+					       event.target.value = null
+				       }}
+				
+				/>
 				<AddIngredientItem onSubmitIngredient={this.addIngredient} ingredients={this.state.ingredients}/>
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
 				<TestIngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>

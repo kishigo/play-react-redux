@@ -10,7 +10,7 @@ import Ingredient from './Ingredient'
 /**
  * Stateless react component defined as a functional component
  * http://www.zsoltnagy.eu/container-components-and-stateless-functional-components-in-react/
- * 
+ *
  * @param ingredients
  * @param onItemClick
  * @constructor
