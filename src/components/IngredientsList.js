@@ -17,6 +17,7 @@ import Ingredient from './Ingredient'
  */
 const IngredientsList = ({ingredients, onItemClick}) => (
 	<ul>
+		<h3>Ingredients</h3>
 		{ingredients.map(ingredient => (
 				<Ingredient key={ingredient.id} ingredient={ingredient} onClick={() => onItemClick(ingredient.id)}/>
 			))}

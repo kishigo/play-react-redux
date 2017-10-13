@@ -21,6 +21,7 @@ let AddIngredientItem = (props) => {
 	
 	return (
 		<div>
+			<h2>Add Ingredient</h2>
 			<form
 				onSubmit={e => {
 					e.preventDefault();

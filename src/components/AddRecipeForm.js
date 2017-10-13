@@ -16,7 +16,7 @@ import TestIngredientsList from './TestIngredientsList'
 class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
-		this.state = {recipeId: 0, ingredients : []};
+		this.state = {recipeId: 0, ingredients: [], file: {}};
 		console.log('AddRecipeForm.constructor: state: ' + this.state);
 	}
 	
@@ -28,21 +28,41 @@ class AddRecipeForm extends React.Component {
 	 * @param ingredient
 	 */
 	addIngredient = (ingredient) => {
-		console.log('addIngredient: qty: ' + ingredient.qty + ' | item: ' + ingredient.name + ' | type: ' + ingredient.type );
+		console.log('addIngredient: qty: ' + ingredient.qty + ' | item: ' + ingredient.name + ' | type: ' + ingredient.type);
 		this.setState((prevState, props) => {
-			console.log('prevState: ' + prevState + ', props: ' + props);
+			console.log('prevState.recipeId: ' + prevState.recipeId + ', props: ' + props);
+			// spread ingredients with new fields
 			ingredient = {...ingredient, id: prevState.recipeId, selected: false};
+			// spread update of selected fields
 			return {
-				recipeId: prevState.recipeId++,
-				ingredients: prevState.ingredients.concat([ingredient])
+				...prevState,
+					recipeId: ++prevState.recipeId,
+					ingredients: prevState.ingredients.concat([ingredient])
+				
 			};
 		});
 		// this.state.ingredients = this.state.ingredients.concat([ingredient]);
-		console.log('this.state: id: ' + this.state.recipeId + ' | ingredients: ' + this.state.ingredients.length);
+		console.log('state: id: ' + this.state.recipeId + ' | ingredients: ' + this.state.ingredients.length + ', file: ' + this.state.file);
 	};
-	
+	/**
+	 * mark the ingredient as it was clicked.
+	 * mark is selected true|false
+	 * @param id
+	 */
 	markIngredient = (id) => {
 		console.log('markIngredient[' + id + ']');
+	};
+	/**
+	 * Update state with file
+	 * @param file - object from input
+	 */
+	setFile = (file) => {
+		this.setState((prevState, props) => {
+			// spread update of selected fields
+			return {
+				...prevState, file: file
+			}
+		});
 	};
 	
 	/**
@@ -54,18 +74,23 @@ class AddRecipeForm extends React.Component {
 		return (
 			<div>
 				<h1>Add Recipe Form</h1>
-				<input id="upload" ref="upload" type="file" accept="image/*"
-				       onChange={(event)=> {
-					       this.readFile(event)
+				<h2>Recipe File</h2>
+				<input id="upload" ref="upload" type="file" accept="all/*"
+				       onChange={(event) => {
+					       // file will not have the path but if file is passed
+					       // to a FileReader instance, it will do the right thing
+					       let file = document.getElementById("upload").files[0];
+					       console.log('file: ' + file);
+					       this.setFile(file);
 				       }}
-				       onClick={(event)=> {
+				       onClick={(event) => {
 					       event.target.value = null
 				       }}
 				
 				/>
 				<AddIngredientItem onSubmitIngredient={this.addIngredient} ingredients={this.state.ingredients}/>
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
-				<TestIngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
+				{/*<TestIngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>*/}
 				{/*<VisibleIngredientsList/>*/}
 			</div>
 		)
