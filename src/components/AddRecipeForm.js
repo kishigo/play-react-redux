@@ -6,9 +6,8 @@
  */
 import React from 'react'
 import AddIngredientItem from './AddIngredientItem'
-import VisibleIngredientsList from '../containers/VisibleIngredientsList'
 import IngredientsList from './IngredientsList'
-import TestIngredientsList from './TestIngredientsList'
+import KeywordList from './KeywordList'
 
 /**
  * Use class method of creating presentational component
@@ -16,7 +15,7 @@ import TestIngredientsList from './TestIngredientsList'
 class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
-		this.state = {recipeId: 0, ingredients: [], file: {}};
+		this.state = {recipeId: 0, ingredients: [], file: {}, keywordId: 0, keywords: [{id: 0, text: 'beef', selected: false}, {id: 1, text: 'main dish', selected: false}]};
 		console.log('AddRecipeForm.constructor: state: ' + this.state);
 	}
 	
@@ -51,6 +50,28 @@ class AddRecipeForm extends React.Component {
 	 */
 	markIngredient = (id) => {
 		console.log('markIngredient[' + id + ']');
+		this.setState((prevState, props) => {
+			return {
+				...prevState, ingredients: prevState.ingredients.map(ingredient =>
+					(id === ingredient.id) ? {...ingredient, selected: !ingredient.selected}
+					: ingredient)
+			}
+		});
+	};
+	/**
+	 * mark the keyword as it was clicked.
+	 * mark is selected true|false
+	 * @param id
+	 */
+	markKeyword = (id) => {
+		console.log('markKeyword[' + id + ']');
+		this.setState((prevState, props) => {
+			return {
+				...prevState, keywords: prevState.keywords.map(keyword =>
+					(id === keyword.id) ? {...keyword, selected: !keyword.selected}
+						: keyword)
+			}
+		});
 	};
 	/**
 	 * Update state with file
@@ -90,8 +111,7 @@ class AddRecipeForm extends React.Component {
 				/>
 				<AddIngredientItem onSubmitIngredient={this.addIngredient} ingredients={this.state.ingredients}/>
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
-				{/*<TestIngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>*/}
-				{/*<VisibleIngredientsList/>*/}
+				<KeywordList items={this.state.keywords} onItemClick={this.markKeyword} horizontal={true}/>
 			</div>
 		)
 	}

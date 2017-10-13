@@ -40,8 +40,8 @@ let initialState = {todos:[
 		{id: getNextRecipeId(), title: 'stew', selected: false, ingredients:[
 			{id: 1, name: 'eggs', qty: '18', selected: false},
 			{id: 2, name: 'butter', qty: '1 lb', completed: false}
-		]},
-		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: []}],
+		], keywords: ['main dish', 'beef']},
+		{id: getNextRecipeId(), title: 'apple pie', selected: false, ingredients: [], keywords: []}],
 	ingredients:[
 		{id: ingredient_1, name: 'eggs', qty: '18', selected: false, type: 'dairy'},
 		{id: ingredient_2, name: 'boneless skinless chicken breast', qty: '1 lb', selected: false, type: 'meat'}],

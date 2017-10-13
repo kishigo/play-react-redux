@@ -6,25 +6,24 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Item from './Item'
+import GenericList from './GenericList'
 /**
  * Presentational component to represent a basic list of items
  * @param items - list of items, must have {id, text, selected} attributes
  * @param onItemClick - action on item when clicked
  * @constructor
  */
-const GenericList = ({ items, onItemClick, horizontal = false}) => (
+const KeywordList = ({ items, onItemClick}) => (
 	<ul>
-		{items.map(item => (
-			<Item key={item.id} {...item} horizontal={horizontal} onClick={() => onItemClick(item.id)} />
-		))}
+		<h3>Keywords</h3>
+		<GenericList items={items} onItemClick={onItemClick} horizontal={true}/>
 	</ul>
 );
 /**
  * defines the required shape
  * @type {{items: *, onItemClick: *}}
  */
-GenericList.propTypes = {
+KeywordList.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
@@ -36,4 +35,4 @@ GenericList.propTypes = {
 	horizontal: PropTypes.bool
 };
 
-export default GenericList
+export default KeywordList
