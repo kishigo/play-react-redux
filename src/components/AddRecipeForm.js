@@ -17,6 +17,7 @@ class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
 		this.state = {recipeId: 0,
+			recipeType: 'EXTERNAL_RECIPE_FILE',
 			ingredients: [],
 			file: {},
 			instructions: 'Enter instructions here',
@@ -92,7 +93,6 @@ class AddRecipeForm extends React.Component {
 		let textContent = event.target.value;
 		this.setState((prevState, props) => ({...prevState, instructions: textContent}))
 	};
-	
 	/**
 	 * Update state with file
 	 * @param file - object from input
@@ -105,7 +105,13 @@ class AddRecipeForm extends React.Component {
 			}
 		});
 	};
-	
+	acceptPage = () => {
+		console.log('acceptPage');
+		this.props.onItemClick('acceptPage');
+	};
+	cancelPage = () => {
+		console.log('cancelPage');
+	};
 	/**
 	 * must be furnished, here let's test our ability to get at this.ingredients
 	 * with a statically bound fat arrow function
@@ -133,7 +139,8 @@ class AddRecipeForm extends React.Component {
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
 				<Instructions textContent={this.state.instructions} onChange={this.handleInstructionChange}/>
 				<KeywordList items={this.state.keywords} onItemClick={this.markKeyword}/>
-				
+				<button onClick={this.acceptPage}>Accept</button>
+				<button onClick={this.cancelPage}>Cancel</button>
 			</div>
 		)
 	}

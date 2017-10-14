@@ -10,6 +10,8 @@ import Home from './Home'
 import About from './About'
 import AddRecipeForm from './AddRecipeForm'
 import EditRecipeForm from './EditRecipeForm'
+import AddRecipeContainer from '../containers/AddRecipeContainer'
+import EditRecipeContainer from '../containers/EditRecipeContainer'
 import CreateRecipeForm from './CreateRecipeForm'
 
 const App = () => (
@@ -29,9 +31,10 @@ const App = () => (
 		<main>
 			<Route exact path="/" component={Home}/>
 			<Route exact path="/about-us" component={About}/>
-			<Route exact path="/add-recipe-form" component={AddRecipeForm}/>
+			<Route exact path="/add-recipe-form" component={AddRecipeContainer}/>
 			<Route exact path="/create-recipe-form" component={CreateRecipeForm}/>
-			<Route exact path="/edit-recipe-form" component={EditRecipeForm}/>
+			{/*<Route exact path="/edit-recipe-form" component={EditRecipeForm}/>*/}
+			<Route exact path="/edit-recipe-form" component={EditRecipeContainer}/>
 		</main>
 	</div>
 );
