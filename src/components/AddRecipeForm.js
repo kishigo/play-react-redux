@@ -7,6 +7,7 @@
 import React from 'react'
 import AddIngredientItem from './AddIngredientItem'
 import IngredientsList from './IngredientsList'
+import AddKeywordItem from './AddKeywordItem'
 import KeywordList from './KeywordList'
 import Instructions from './Instructions'
 
@@ -16,16 +17,14 @@ import Instructions from './Instructions'
 class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
-		this.state = {recipeId: 0,
+		this.state = {
+			recipeId: 0,
 			recipeType: 'EXTERNAL_RECIPE_FILE',
 			ingredients: [],
 			file: {},
 			instructions: 'Enter instructions here',
 			keywordId: 0,
-			keywords: [
-			{id: 0, text: 'beef', selected: false},
-			{id: 1, text: 'main dish', selected: false}
-			]
+			keywords: []
 		};
 		console.log('AddRecipeForm.constructor: state: ' + this.state);
 	}
@@ -66,6 +65,17 @@ class AddRecipeForm extends React.Component {
 				...prevState, ingredients: prevState.ingredients.map(ingredient =>
 					(id === ingredient.id) ? {...ingredient, selected: !ingredient.selected}
 					: ingredient)
+			}
+		});
+	};
+	addKeyword = (keyword) => {
+		console.log('addKeyword: keyword: ' + keyword.text);
+		this.setState((prevState, props) => {
+			keyword = {...keyword, id: prevState.keywordId, selected: false, };
+			return {
+				...prevState,
+				keywordId: ++prevState.keywordId,
+				keywords: prevState.keywords.concat([keyword])
 			}
 		});
 	};
@@ -135,9 +145,10 @@ class AddRecipeForm extends React.Component {
 				       }}
 				
 				/>
-				<AddIngredientItem onSubmitIngredient={this.addIngredient} ingredients={this.state.ingredients}/>
+				<AddIngredientItem onSubmitIngredient={this.addIngredient}/>
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
 				<Instructions textContent={this.state.instructions} onChange={this.handleInstructionChange}/>
+				<AddKeywordItem onSubmitKeyword={this.addKeyword}/>
 				<KeywordList items={this.state.keywords} onItemClick={this.markKeyword}/>
 				<button onClick={this.acceptPage}>Accept</button>
 				<button onClick={this.cancelPage}>Cancel</button>
