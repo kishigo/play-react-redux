@@ -8,6 +8,7 @@ import React from 'react'
 import AddIngredientItem from './AddIngredientItem'
 import IngredientsList from './IngredientsList'
 import KeywordList from './KeywordList'
+import Instructions from './Instructions'
 
 /**
  * Use class method of creating presentational component
@@ -15,7 +16,11 @@ import KeywordList from './KeywordList'
 class AddRecipeForm extends React.Component {
 	constructor() {
 		super();
-		this.state = {recipeId: 0, ingredients: [], file: {}, keywordId: 0,
+		this.state = {recipeId: 0,
+			ingredients: [],
+			file: {},
+			instructions: 'Enter instructions here',
+			keywordId: 0,
 			keywords: [
 			{id: 0, text: 'beef', selected: false},
 			{id: 1, text: 'main dish', selected: false}
@@ -79,6 +84,16 @@ class AddRecipeForm extends React.Component {
 		});
 	};
 	/**
+	 * Handle updates to textArea
+	 * @param event
+	 */
+	handleInstructionChange = (event) => {
+		// have to store out the value for some reason or this.setState considers it undefined
+		let textContent = event.target.value;
+		this.setState((prevState, props) => ({...prevState, instructions: textContent}))
+	};
+	
+	/**
 	 * Update state with file
 	 * @param file - object from input
 	 */
@@ -116,7 +131,9 @@ class AddRecipeForm extends React.Component {
 				/>
 				<AddIngredientItem onSubmitIngredient={this.addIngredient} ingredients={this.state.ingredients}/>
 				<IngredientsList ingredients={this.state.ingredients} onItemClick={this.markIngredient}/>
+				<Instructions textContent={this.state.instructions} onChange={this.handleInstructionChange}/>
 				<KeywordList items={this.state.keywords} onItemClick={this.markKeyword}/>
+				
 			</div>
 		)
 	}

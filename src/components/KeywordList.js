@@ -14,10 +14,10 @@ import GenericList from './GenericList'
  * @constructor
  */
 const KeywordList = ({ items, onItemClick}) => (
-	<ul>
-		<h3>Keywords</h3>
+	<div>
+		<h2>Keywords</h2>
 		<GenericList items={items} onItemClick={onItemClick} horizontal={true}/>
-	</ul>
+	</div>
 );
 /**
  * defines the required shape
