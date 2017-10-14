@@ -13,12 +13,18 @@ import PropTypes from 'prop-types'
  * @param text
  * @constructor
  */
-const Item = ({ onClick, selected, text}) => (
+const Item = ({ onClick, selected, text, horizontal}) => {
+	let displayVal = 'normal';
+	if (horizontal) {
+		text += ' ';
+		displayVal = 'inline';
+	}
+	return (
 	<li onClick={onClick}
-	    style={{textDecoration: selected ? 'line-through' : 'none'}}>
+	    style={{display: displayVal, textDecoration: selected ? 'line-through' : 'none'}}>
 		{text}
 	</li>
-);
+);};
 /**
  * defines the required shape of the item
  * @type {{onClick: *, selected: *, text: *}}
@@ -26,7 +32,8 @@ const Item = ({ onClick, selected, text}) => (
 Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	selected: PropTypes.bool.isRequired,
-	text: PropTypes.string.isRequired
+	text: PropTypes.string.isRequired,
+	horizontal: PropTypes.bool.isRequired
 	
 };
 
