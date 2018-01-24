@@ -13,6 +13,7 @@ import EditRecipeForm from './EditRecipeForm'
 import AddRecipeContainer from '../containers/AddRecipeContainer'
 import EditRecipeContainer from '../containers/EditRecipeContainer'
 import CreateRecipeForm from './CreateRecipeForm'
+import RecipeGalleryContainer from '../containers/RecipeGalleryContainer'
 
 const App = () => (
 	<div>
@@ -27,6 +28,8 @@ const App = () => (
 			<Link to="/create-recipe-form">Create Recipe Form</Link>
 			|
 			<Link to="/edit-recipe-form">Edit Recipe Form</Link>
+			|
+			<Link to="/recipe-gallery">Recipe Gallery</Link>
 		</header>
 		<main>
 			<Route exact path="/" component={Home}/>
@@ -35,6 +38,7 @@ const App = () => (
 			<Route exact path="/create-recipe-form" component={CreateRecipeForm}/>
 			{/*<Route exact path="/edit-recipe-form" component={EditRecipeForm}/>*/}
 			<Route exact path="/edit-recipe-form" component={EditRecipeContainer}/>
+			<Route exact path="/recipe-gallery" component={RecipeGalleryContainer}/>
 		</main>
 	</div>
 );
