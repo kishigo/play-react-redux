@@ -18,8 +18,8 @@ import RecipeGalleryContainer from '../containers/RecipeGalleryContainer'
 const App = () => (
 	<div>
 		<header>
-			Links-->
-			<Link to="/">Home</Link>
+			NAV-->
+			<Link to="/"><img src="favicon.ico" alt="wtf"/></Link>
 			|
 			<Link to="/about-us">About</Link>
 			|
