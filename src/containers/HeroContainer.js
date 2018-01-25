@@ -21,7 +21,7 @@ const HeroContainer = (props) => {
 		textAlign: "center"
 	};
 	return <div>
-		<Hero heroImage={'favicon.ico'}/>
+		<Hero heroImage={'favicon.ico'} backgroundColor={'black'}/>
 		<div style={ testStyle }>Hello</div>
 	</div>
 };

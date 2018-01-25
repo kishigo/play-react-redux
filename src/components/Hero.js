@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
  * @constructor
  */
 
-const Hero = ({heroImage}) => {
+const Hero = ({ heroImage, backgroundColor}) => {
 	// CSS Styling.  There is some cruft in the style to help align
 	var backgroundStyle = {
 		width: "100%",
@@ -24,7 +24,7 @@ const Hero = ({heroImage}) => {
 		backgroundRepeat: "no-repeat",
 		backgroundSize: "contain",
 		border: "2px solid blue",
-		backgroundColor: "black"
+		backgroundColor: backgroundColor
 	};
 	return (
 		<div style={ backgroundStyle }></div>
@@ -35,6 +35,7 @@ const Hero = ({heroImage}) => {
  * @type {{heroImage: *}}
  */
 Hero.propTypes = {
-	heroImage: PropTypes.string.isRequired
+	heroImage: PropTypes.string.isRequired,
+	backgroundColor: PropTypes.string.isRequired
 };
 export default Hero
