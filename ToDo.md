@@ -1,8 +1,8 @@
 Components:
 * Hero - Implemented in Hero.js
-* PillButton - TBD
+* PillButton - PillButton.js
   * Active
-  * Inactive -- annotation button
+  * Inactive -- annotation button -- TBD
 * Synopsis - TBD
 * GenericTextBox - TBD
 * ImageGridRow - ImageRow.js - Needs elaboration.
@@ -22,3 +22,7 @@ Containers:
     * Test single row
     * Test multi row
     * Enable injected onClick
+    
+Structural:
+* How to have button on top of div clickable
+  * add zIndex to style

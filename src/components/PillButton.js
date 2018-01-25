@@ -13,22 +13,28 @@ import PropTypes from 'prop-types'
  * @constructor
  */
 
-const PillButton = ({ onClickFn, width, backgroundColor}) => {
+const localOnClickFn = (e) => {
+	e.preventDefault();
+	console.log('localOnClickFn');
+};
+const PillButton = ({ onClickFn, title, width, backgroundColor}) => {
 	// CSS Styling.  There is some cruft in the style to help align
 	let widthString = width + "px";
 	var buttonStyle = {
 		border: "2px solid blue",
 		padding: "20px",
 		textAlign: "center",
+		color: "white",
 		display: "inline-block",
 		fontSize: "16px",
 		margin: "4px 2px",
 		borderRadius: "30px",
 		width: widthString,
-		backgroundColor: backgroundColor
+		backgroundColor: backgroundColor,
+		zIndex: "1"
 	};
 	return (
-		<button style={ buttonStyle }></button>
+		<button onClick={(e) => onClickFn(e)} style={ buttonStyle }>{ title }</button>
 	)
 };
 /**
@@ -36,7 +42,8 @@ const PillButton = ({ onClickFn, width, backgroundColor}) => {
  * @type {{heroImage: *}}
  */
 PillButton.propTypes = {
-	onClickFn: PropTypes.string.isRequired,
+	onClickFn: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
 	width: PropTypes.number.isRequired,
 	backgroundColor: PropTypes.string.isRequired
 };

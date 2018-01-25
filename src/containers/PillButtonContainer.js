@@ -6,24 +6,16 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import Hero from '../components/Hero'
+import PillButton from "../components/PillButton";
 
 const PillButtonContainer = (props) => {
-	// Just goofing around with overlaying div on top
-	var testStyle = {
-		width: "100%",
-		height: "100%",
-		position: "absolute",
-		top: "350px",
-		color: "red",
-		margin: "auto",
-		border: "3px solid green",
-		textAlign: "center"
+	let handleClick = (e) => {
+		e.preventDefault();
+		console.log('WTF');
 	};
 	return <div>
-		<Hero heroImage={'favicon.ico'} backgroundColor={'black'}/>
-		<div style={ testStyle }>Hello</div>
-	</div>
+		<PillButton onClickFn={handleClick} title={"Testing 1,2,3"} width={200} backgroundColor={'blue'}/>
+		</div>
 };
 
-export default PillButtonContainer
+export default PillButtonContainer;

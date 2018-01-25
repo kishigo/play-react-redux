@@ -21,13 +21,15 @@ const HeroContainer = (props) => {
 		border: "3px solid green",
 		textAlign: "center"
 	};
-	const testOnClick = () => {
-		console.log('testOnClidk');
+	const testOnClick = (e) => {
+		e.preventDefault();
+		console.log('testOnClick');
 	};
 	return <div>
 		<Hero heroImage={'favicon.ico'} backgroundColor={'black'}/>
-		<div style={ testStyle }>Hello</div>
-		<PillButton onClickFn={testOnClick} width={200} backgroundColor={'blue'}/>
+		{/*<div style={ testStyle }>Hello</div>*/}
+		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} width={200} backgroundColor={'blue'}/>
+		<button onClick={testOnClick}>test button</button>
 	</div>
 };
 

@@ -15,6 +15,7 @@ import EditRecipeContainer from '../containers/EditRecipeContainer'
 import CreateRecipeForm from './CreateRecipeForm'
 import RecipeGalleryContainer from '../containers/RecipeGalleryContainer'
 import HeroContainer from '../containers/HeroContainer'
+import PillButtonContainer from '../containers/PillButtonContainer'
 
 const App = () => (
 	<div>
@@ -33,6 +34,8 @@ const App = () => (
 			<Link to="/recipe-gallery">Recipe Gallery</Link>
 			|
 			<Link to="/hero-test">Hero Test</Link>
+			|
+			<Link to="/pill-test">Pill Test</Link>
 		</header>
 		<main>
 			<Route exact path="/" component={Home}/>
@@ -43,6 +46,7 @@ const App = () => (
 			<Route exact path="/edit-recipe-form" component={EditRecipeContainer}/>
 			<Route exact path="/recipe-gallery" component={RecipeGalleryContainer}/>
 			<Route exact path="/hero-test" component={HeroContainer}/>
+			<Route exact path="/pill-test" component={PillButtonContainer}/>
 		</main>
 	</div>
 );
