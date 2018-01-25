@@ -15,10 +15,16 @@ const getVisibleRecipes = (recipes, filter) => {
 	return newRecipes;
 };
 
+const buildItem = item => ({id: item.id, text: item.title, selected: false});
+
+const getVisibleRecipesList = (recipes, filter) => {
+	return recipes.map(item => (buildItem(item)));
+};
+
 const mapStateToProps = state => {
 	return {
 //		recipes: getVisibleRecipes(state.recipes, state.filter)
-		items: getVisibleRecipes(state.recipes, state.filter)
+		items: getVisibleRecipesList(state.recipes, state.filter)
 	}
 };
 

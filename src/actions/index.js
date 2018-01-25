@@ -63,9 +63,9 @@ export const ingestRecipe = recipe => {
 	return {
 		type: RecipeTypes.INGEST_RECIPE,
 		id: getNextRecipeId(),
-		recipe: {
-			title: recipe
-		}
+		title: recipe,
+		selected: false,
+		ingredients: []
 	}
 };
 
