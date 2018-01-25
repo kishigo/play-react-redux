@@ -1,5 +1,5 @@
 /**
- * Created by Kelvin Ishigo on 1/24/18.
+ * Created by Kelvin Ishigo on 1/25/18.
  *
  * Copyright (c) 2018 Kelvin Ishigo
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
@@ -7,9 +7,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Hero from '../components/Hero'
-import PillButton from "../components/PillButton";
 
-const HeroContainer = (props) => {
+const PillButtonContainer = (props) => {
 	// Just goofing around with overlaying div on top
 	var testStyle = {
 		width: "100%",
@@ -21,14 +20,10 @@ const HeroContainer = (props) => {
 		border: "3px solid green",
 		textAlign: "center"
 	};
-	const testOnClick = () => {
-		console.log('testOnClidk');
-	};
 	return <div>
 		<Hero heroImage={'favicon.ico'} backgroundColor={'black'}/>
 		<div style={ testStyle }>Hello</div>
-		<PillButton onClickFn={testOnClick} width={200} backgroundColor={'blue'}/>
 	</div>
 };
 
-export default HeroContainer
+export default PillButtonContainer
