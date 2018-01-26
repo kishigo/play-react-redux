@@ -6,7 +6,8 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
-import PillButton from "../components/PillButton";
+import PillButton from "../components/PillButton"
+import PillButtonStack from "./PillButtonStack"
 
 const PillButtonContainer = (props) => {
 	let handleClick = (e) => {
@@ -15,6 +16,7 @@ const PillButtonContainer = (props) => {
 	};
 	return <div>
 		<PillButton onClickFn={handleClick} title={"Testing 1,2,3"} width={200} backgroundColor={'blue'}/>
+		<PillButtonStack/>
 		</div>
 };
 

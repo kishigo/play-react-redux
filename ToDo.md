@@ -3,8 +3,8 @@ Components:
 * PillButton - PillButton.js
   * Active
   * Inactive -- annotation button -- TBD
-* Synopsis - TBD
-* GenericTextBox - TBD
+* Synopsis - Synopsis.js
+* ReadOnlyTextBox - ReadOnlyTextBox.js
 * ImageGridRow - ImageRow.js - Needs elaboration.
   * Built on react-grid-gallery
 
@@ -26,3 +26,4 @@ Containers:
 Structural:
 * How to have button on top of div clickable
   * add zIndex to style
+* Control placement side by side, overlay, etc.

@@ -8,7 +8,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Hero from '../components/Hero'
 import PillButton from "../components/PillButton";
+import Synopsis from "../components/Synopsis";
+import ReadOnlyTextBox from "../components/ReadOnlyTextBox";
+import "../index.css"
 
+const textBodyText = "aeij sinosiifosfjein o oseifosijoim siseofjjfiseifj   fisfijsoef";
 const HeroContainer = (props) => {
 	// Just goofing around with overlaying div on top
 	var testStyle = {
@@ -24,12 +28,17 @@ const HeroContainer = (props) => {
 	const testOnClick = (e) => {
 		e.preventDefault();
 		console.log('testOnClick');
+		alert('Bite me!')
 	};
 	return <div>
-		<Hero heroImage={'favicon.ico'} backgroundColor={'black'}/>
+		<Hero heroImage={'MA_Header_Logo.png'} backgroundColor={'black'}/>
 		{/*<div style={ testStyle }>Hello</div>*/}
-		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} width={200} backgroundColor={'blue'}/>
+		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200} backgroundColor={'#ffffff00'}/>
 		<button onClick={testOnClick}>test button</button>
+		<div className='rowC'>
+			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={ "black" }/>
+			<ReadOnlyTextBox textBody={textBodyText} textColor={"red"} backgroundColor={"green"}/>
+		</div>
 	</div>
 };
 

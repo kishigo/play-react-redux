@@ -32,7 +32,8 @@ const Hero = ({ heroImage, backgroundColor}) => {
 };
 /**
  * Defines the required props shape
- * @type {{heroImage: *}}
+ * @type {{heroImage: PropTypes.string.isRequired}}
+ * @type {{backgroundColor: PropTypes.string.isRequired}}
  */
 Hero.propTypes = {
 	heroImage: PropTypes.string.isRequired,
