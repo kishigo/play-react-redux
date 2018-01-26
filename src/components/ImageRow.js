@@ -7,9 +7,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Gallery from 'react-grid-gallery'
+import ImageGallery from 'react-image-gallery'
 
 const ImageRow = (props) => {
     console.log('ImageRow');
+    const images = [
+      {
+        original: 'http://lorempixel.com/1000/600/nature/1/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/2/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/3/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+      }
+    ];
     const clickThumbnail = () => {
         console.log('clickThumbnail');
     };
@@ -19,6 +34,7 @@ const ImageRow = (props) => {
                      enableLightbox={false}
                      onClickThumbnail={clickThumbnail}
                      maxRows={1}/>
+            <ImageGallery items={images}/>
         </div>
     );
 };

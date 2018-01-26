@@ -8,15 +8,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /**
- * Presentational component to represent a formatted buttno
+ * Presentational component to represent a formatted button
  * @param onClickFn - passed in click handler
  * @param title - string button title
  * @param titleColor - foreground color of title
  * @param width - width in pixels (number)
  * @param backgroundColor - button background, color or RGBA, e.g., #ffffff00 => clear
+ * @param disabled - button is disabled if true
  * @constructor
  */
-const PillButton = ({ onClickFn, title, titleColor, width, backgroundColor}) => {
+const PillButton = ({ onClickFn, title, titleColor, width, backgroundColor, disabled }) => {
 	// CSS Styling.  There is some cruft in the style to help align
 	let widthString = width + "px";
 	// border: none to remove outline for transparent button backgroundColor
@@ -36,9 +37,16 @@ const PillButton = ({ onClickFn, title, titleColor, width, backgroundColor}) => 
 		backgroundColor: backgroundColor,
 		zIndex: "1"
 	};
-	return (
-		<button onClick={(e) => onClickFn(e)} style={ buttonStyle }>{ title }</button>
-	)
+	if (disabled) {
+		return (
+			<button onClick={(e) => onClickFn(e)} style={ buttonStyle } disabled>{ title }</button>
+		)
+	}
+	else {
+		return (
+			<button onClick={(e) => onClickFn(e)} style={ buttonStyle } >{ title }</button>
+		)
+	}
 };
 /**
  * Defines the required props shape
@@ -53,6 +61,7 @@ PillButton.propTypes = {
 	title: PropTypes.string.isRequired,
 	titleColor: PropTypes.string.isRequired,
 	width: PropTypes.number.isRequired,
-	backgroundColor: PropTypes.string.isRequired
+	backgroundColor: PropTypes.string.isRequired,
+	disabled: PropTypes.bool.isRequired
 };
 export default PillButton

@@ -15,7 +15,7 @@ const PillButtonContainer = (props) => {
 		console.log('WTF');
 	};
 	return <div>
-		<PillButton onClickFn={handleClick} title={"Testing 1,2,3"} width={200} backgroundColor={'blue'}/>
+		<PillButton onClickFn={handleClick} title={"Testing 1,2,3"} titleColor={"red"} width={200} backgroundColor={'blue'} disabled={false}/>
 		<PillButtonStack/>
 		</div>
 };

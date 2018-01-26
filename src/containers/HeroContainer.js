@@ -33,7 +33,7 @@ const HeroContainer = (props) => {
 	return <div>
 		<Hero heroImage={'MA_Header_Logo.png'} backgroundColor={'black'}/>
 		{/*<div style={ testStyle }>Hello</div>*/}
-		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200} backgroundColor={'#ffffff00'}/>
+		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200} backgroundColor={'#ffffff00'} disabled={true}/>
 		<button onClick={testOnClick}>test button</button>
 		<div className='rowC'>
 			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={ "black" }/>

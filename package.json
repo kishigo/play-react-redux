@@ -9,14 +9,17 @@
   },
   "dependencies": {
     "history": "^4.7.2",
+    "pixi.js": "^4.7.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-grid-gallery": "^0.4.8",
+    "react-image-gallery": "^0.8.7",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
+    "react-scrolllock": "^2.0.1",
     "react-textarea-autosize": "^5.2.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"

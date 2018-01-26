@@ -15,7 +15,7 @@ let PillButtonStack = (props) => {
 	};
 	let buttons = props.buttons.map((button, i) => {
 		return (
-			<PillButton key={i} onClickFn={handleClick} title={"TestButton-"+i } titleColor={"white"} width={200} backgroundColor={"blue"}/>
+			<PillButton key={i} onClickFn={handleClick} title={"TestButton-"+i } titleColor={"white"} width={200} backgroundColor={"blue"} disabled={false}/>
 		)
 	});
 	return <div>

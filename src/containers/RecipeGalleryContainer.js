@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import Gallery from 'react-grid-gallery'
 import ImageGrid from "../components/ImageGrid";
 import ImageRow from "../components/ImageRow";
+import SampleDisplay from '../components/SampleDisplay'
 
 const IMAGES =
     [{
@@ -219,6 +220,14 @@ const generateImages = () => {
     return uniformThumbnails;
 };
 
+
+// var sampleItems = [
+// 	  {key: 1, name: 'Test', sort: 0, filtered: 0},
+//   {key: 2, name: 'Test 1', sort: 1, filtered: 0},
+// ];
+
+// const AbsoluteGrid = createAbsoluteGrid(SampleDisplay);
+
 let RecipeGalleryContainer = () => {
     console.log('RecipeGalleryContainer');
     const clickThumbnail = () => {
@@ -227,6 +236,7 @@ let RecipeGalleryContainer = () => {
     return <div>
         <ImageGrid generateImages={generateImages}/>
         <ImageRow generateRowImages={generateImages}/>
+	    {/*<AbsoluteGrid items={sampleItems}/>*/}
 {/*
         <Gallery images={generateImages()}
                  enableLightbox={false}
