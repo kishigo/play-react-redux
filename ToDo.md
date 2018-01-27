@@ -32,3 +32,6 @@ Structural:
 
 ToDo:
 * Look at AbsoluteGrid - https://github.com/jrowny/react-absolute-grid
+* Update Hero with more controls, options
+* Build pure react grid slider
+* Add mock Hero data to store.js

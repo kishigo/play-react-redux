@@ -34,7 +34,6 @@ const ImageRow = (props) => {
                      enableLightbox={false}
                      onClickThumbnail={clickThumbnail}
                      maxRows={1}/>
-            <ImageGallery items={images}/>
         </div>
     );
 };
