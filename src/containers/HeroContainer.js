@@ -12,6 +12,9 @@ import Synopsis from "../components/Synopsis";
 import ReadOnlyTextBox from "../components/ReadOnlyTextBox";
 import "../index.css"
 import FormattedText from "../components/FormattedTextItem";
+import CellItem from "../components/CellItem";
+import ImageItem from "../components/ImageItem";
+import RowOfCellItems from "../components/RowOfCellItems";
 
 const textBodyText = "aeij sinosiifosfjein o osei\nfosijoim siseofjjfiseifj   fisfijsoef";
 const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -46,16 +49,40 @@ const HeroContainer = (props) => {
 	var fontStyle = {
 		fontSize: "8px"
 	};
+	// let testComponent = {};
+	let testComponent = FormattedText({
+		text: sampleText,
+		textColor: "red",
+		fontSize: 8,
+		fontFace: 'any',
+		backgroundColor: "yellow"
+	});
+	let imageComponent = ImageItem({imageUrl: 'MA_Header_Logo.png'});
+	let testFormattedTextItem = {
+		type: "FormattedTextItem",
+		text: sampleText,
+		textColor: "red",
+		fontSize: 8
+	};
+	let testImageItem = {
+		type: "ImageItem",
+		imageUrl: "MA_Header_Logo.png"
+	};
 	return <div>
 		<Hero heroImage={'MA_Header_Logo.png'} backgroundColor={'black'}/>
 		{/*<div style={ testStyle }>Hello</div>*/}
 		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200} backgroundColor={'#ffffff00'} disabled={true}/>
 		<button onClick={testOnClick}>test button</button>
+		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'} h={'200px'} backgroundColor={"gray"}/>
+		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'} h={'200px'} backgroundColor={"gray"} selected={true}/>
 		<div className='rowC'>
 			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={ "black" }/>
 			<ReadOnlyTextBox textBody={textBodyText} textColor={"red"} backgroundColor={"green"}/>
-			<FormattedText text={sampleText} textColor={"red"} font={"any"} fontSize={16} backgroundColor={"gray"}/>
+			<FormattedText text={sampleText} textColor={"white"} font={"any"}  backgroundColor={"gray"}/>
 		</div>
+		<CellItem childComponent={testFormattedTextItem} onClickFn={testOnClick} title={"FOOBAR"} titleColor={"red"} width={200} height={300} backgroundColor={"gray"} selected={true}/>
+		<CellItem childComponent={testImageItem} onClickFn={testOnClick} title={"FOOBAR"} titleColor={"red"} width={200} height={300} backgroundColor={"gray"} selected={false}/>
+		<RowOfCellItems cellItems={[]} visibleItemCount={5}/>
 	</div>
 };
 

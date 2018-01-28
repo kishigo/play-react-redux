@@ -16,28 +16,36 @@ import Text from 'react-format-text'
  * @param fontFace - desired font, there is a default
  * @param fontSize - number  in points, not pixels
  * @param backgroundColor - button background, color or RGBA, e.g., #ffffff00 => clear
+ * @param w - width of box (default is 100%)
+ * @param h - height of box (default is 100%)
  * @constructor
  */
-const FormattedText = ({text, textColor, fontFace, fontSize, backgroundColor}) => {
+const FormattedText = ({text, textColor, fontFace, fontSize, backgroundColor, w, h}) => {
+	if (fontSize === undefined) fontSize = 10;
 	let fontSizeString = fontSize + 'pt';
-	if (fontFace === 'any' || fontFace === 'none') {
+	if (fontFace === 'any' || fontFace === 'none' || fontFace === undefined) {
 		fontFace = 'verdana'
 	}
-	var fontStyle = {
+	if (w === undefined) {
+		w = "100%"
+	}
+	if (h === undefined) {
+		h = "100%"
+	}
+	var outerStyle = {
 		fontSize: fontSizeString,
 		face: fontFace,
-		color: textColor
-	};
-	var textStyle = {
-		border: "none",
-		textAlign: "left",
+		color: textColor,
+		border: "2px solid red",
 		display: "inline-block",
 		backgroundColor: backgroundColor,
+		width: w,
+		height: h
 	};
 	// wrap in div so we can assert fontStyle onto the formatted text w/o having to go into the underlying component
 	return (
-		<div style={fontStyle}>
-			<Text style={textStyle}>{text}</Text>
+		<div style={outerStyle}>
+			<Text>{text}</Text>
 		</div>
 	)
 };
@@ -46,10 +54,13 @@ const FormattedText = ({text, textColor, fontFace, fontSize, backgroundColor}) =
  * @type {{text: string, textColor: string, font: string, fontSize: number, backgroundColor: string}}
  */
 FormattedText.propTypes = {
+
 	text: PropTypes.string.isRequired,
 	textColor: PropTypes.string.isRequired,
-	fontFace: PropTypes.string.isRequired,
-	fontSize: PropTypes.number.isRequired,
-	backgroundColor: PropTypes.string.isRequired
+	fontFace: PropTypes.string,
+	fontSize: PropTypes.number,
+	backgroundColor: PropTypes.string.isRequired,
+	w: PropTypes.string,
+	h: PropTypes.string
 };
 export default FormattedText

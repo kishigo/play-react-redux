@@ -55,6 +55,7 @@ const PillButton = ({ onClickFn, title, titleColor, width, backgroundColor, disa
  * @type {{titleColor: PropTypes.string.isRequired}}
  * @type {{width: PropTypes.number.isRequired}}
  * @type {{backgroundColor: PropTypes.string.isRequired}}
+ * @type {{disabled: PropTypes.bool.isRequired}}
  */
 PillButton.propTypes = {
 	onClickFn: PropTypes.func.isRequired,
