@@ -22,3 +22,24 @@ console.log(xx, yy)
 // { a: 3, x: 4 } { a: 3, x: 4, z: 'foo' }
 let zz = {...yy, a:5};
 console.log(zz);
+
+const Foo = {
+	x: () => {
+		console.log('in x');
+	}
+};
+
+Foo.x();
+
+
+class Bar {
+	constructor() {
+
+	}
+	busy() {
+		console.log('busy');
+	}
+}
+
+let bar = new Bar();
+bar.busy();

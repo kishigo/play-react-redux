@@ -5,7 +5,7 @@
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import Hero from '../components/Hero'
 import PillButton from "../components/PillButton";
 import Synopsis from "../components/Synopsis";
@@ -68,22 +68,42 @@ const HeroContainer = (props) => {
 		type: "ImageItem",
 		imageUrl: "MA_Header_Logo.png"
 	};
+	let testRowOfCellItems = [
+		{
+			type: "FormattedTextItem",
+			text: sampleText,
+			textColor: "red",
+			fontSize: 8
+		},
+		{
+			type: "ImageItem",
+			imageUrl: "MA_Header_Logo.png"
+		}
+	];
+
 	return <div>
 		<Hero heroImage={'MA_Header_Logo.png'} backgroundColor={'black'}/>
 		{/*<div style={ testStyle }>Hello</div>*/}
-		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200} backgroundColor={'#ffffff00'} disabled={true}/>
+		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200}
+		            backgroundColor={'#ffffff00'} disabled={true}/>
 		<button onClick={testOnClick}>test button</button>
-		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'} h={'200px'} backgroundColor={"gray"}/>
-		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'} h={'200px'} backgroundColor={"gray"} selected={true}/>
+		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'}
+		           h={'200px'} backgroundColor={"gray"}/>
+		<ImageItem title={"Hello ImageItem"} imageUrl={'MA_Header_Logo.png'} titleColor={"purple"} w={'200px'}
+		           h={'200px'} backgroundColor={"gray"} selected={true}/>
 		<div className='rowC'>
-			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={ "black" }/>
-			<ReadOnlyTextBox textBody={textBodyText} textColor={"red"} backgroundColor={"green"}/>
-			<FormattedText text={sampleText} textColor={"white"} font={"any"}  backgroundColor={"gray"}/>
+			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={"black"}/>
+			<FormattedText text={sampleText} textColor={"white"} font={"any"} backgroundColor={"gray"}/>
 		</div>
-		<CellItem childComponent={testFormattedTextItem} onClickFn={testOnClick} title={"FOOBAR"} titleColor={"red"} width={200} height={300} backgroundColor={"gray"} selected={true}/>
-		<CellItem childComponent={testImageItem} onClickFn={testOnClick} title={"FOOBAR"} titleColor={"red"} width={200} height={300} backgroundColor={"gray"} selected={false}/>
-		<RowOfCellItems cellItems={[]} visibleItemCount={5}/>
+		<RowOfCellItems cellItems={testRowOfCellItems} h={"300px"} title={"ROW TITLE"} titleColor={"pink"} offset={0} gap={10} visibleItemCount={5} currentSelectedItemIndex={1}/>
 	</div>
 };
+
+//		<CellItem childComponent={testFormattedTextItem} id={0} onClickFn={testOnClick} title={"FOOBAR1"} titleColor={"red"}
+//		          width={200} height={300} backgroundColor={"gray"} selected={true}/>
+//		<CellItem childComponent={testImageItem} id={1} onClickFn={testOnClick} title={"FOOBAR2"} titleColor={"green"} width={200}
+//		          height={300} backgroundColor={"gray"} selected={false}/>
+
+//		<RowOfCellItems cellItems={testRowOfCellItems} visibleItemCount={5} currentSelectedItemIndex={1}/>
 
 export default HeroContainer

@@ -11,6 +11,8 @@ import ImageItem from "./ImageItem";
 /**
  * @brief Presentational component contains either FormattedTextItem or ImageItem, can be part of RowOfCellItems
  * @param childComponent - passed in json to define react component
+ * @param id - unique for this item
+ * @param margin - distance between cells = margin/2
  * @param onClickFn - passed in click handler
  * @param title - string title
  * @param titleColor - foreground title color
@@ -21,13 +23,20 @@ import ImageItem from "./ImageItem";
  * @returns {jsx fragment}
  * @constructor
  */
-const CellItem = ({ childComponent, onClickFn, title, titleColor, width, height, backgroundColor, disabled, selected }) => {
-	let borderStyle = (selected) ? "2px solid red" : "none";
+const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, width, height, backgroundColor, disabled, selected }) => {
+	let borderStyle = (selected) ? "2px solid red" : "1px solid black";
+	if (margin === undefined) {
+		margin = 10;
+	}
+	let marginDistance = margin + "px";
 	let cellStyle = {
 		width: width,
 		height: height,
 		backgroundColor: backgroundColor,
-		border: borderStyle
+		display: "inline-block",
+		border: borderStyle,
+		margin: marginDistance,
+		zIndex: "1"
 	};
 	let titleStyle = {
 		color: titleColor
@@ -49,9 +58,9 @@ const CellItem = ({ childComponent, onClickFn, title, titleColor, width, height,
 		}
 	};
 	return (
-		<div style={cellStyle}>
-			<h2 style={titleStyle}>{title}</h2>
+		<div key={id} onClick={(e) => onClickFn(e, id)} style={cellStyle}>
 			{generateChildComponent(childComponent)}
+			<h2 style={titleStyle}>{title}</h2>
 		</div>
 	)
 };
@@ -59,6 +68,7 @@ const CellItem = ({ childComponent, onClickFn, title, titleColor, width, height,
 /**
  * Defines the required props shape
  * @type {{childComponent: PropTypes.object.isRequired}}
+ * @type {{id: PropTypes.number.isRequired}}
  * @type {{onClickFn: PropTypes.func.isRequired}}
  * @type {{title: PropTypes.string.isRequired}}
  * @type {{titleColor: PropTypes.string.isRequired}}
@@ -69,6 +79,8 @@ const CellItem = ({ childComponent, onClickFn, title, titleColor, width, height,
  */
 CellItem.propTypes = {
 	childComponent: PropTypes.object.isRequired,
+	id: PropTypes.number.isRequired,
+	margin: PropTypes.number,
 	onClickFn: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	titleColor: PropTypes.string.isRequired,
