@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import CellItem from "./CellItem";
 /**
  * @brief Presentational component, row of CellItems
+ * @param id - unique id for this row
  * @param cellItems - json items in row
  * @param title - optional title of row
  * @param titleColor - optional title color
@@ -22,7 +23,7 @@ import CellItem from "./CellItem";
  * @param currentSelectedItemIndex - index of current selected item
  * @constructor
  */
-const RowOfCellItems = ({cellItems, title, titleColor, gap, offset, visibleItemCount, w, h, animateScroll, onItemClickFn, currentSelectedItemIndex}) => {
+const RowOfCellItems = ({id, cellItems, title, titleColor, gap, offset, visibleItemCount, w, h, animateScroll, onItemClickFn, currentSelectedItemIndex}) => {
 	if (w === undefined) {
 		w = "100%"
 	}
@@ -105,9 +106,10 @@ const RowOfCellItems = ({cellItems, title, titleColor, gap, offset, visibleItemC
 
 /**
  * @brief PropType checking on the args to this component
- * @type {{cellItems: *, title: shim, titleColor: shim, w: shim, h: shim, visibleItemCount: *, animateScroll: shim, onItemClickFn: shim, currentSelectedItemIndex: shim}}
+ * @type {{id: *, cellItems: *, title: shim, titleColor: shim, w: shim, h: shim, visibleItemCount: *, animateScroll: shim, onItemClickFn: shim, currentSelectedItemIndex: shim}}
  */
 RowOfCellItems.propTypes = {
+	id: PropTypes.string.isRequired,
 	cellItems: PropTypes.array.isRequired,
 	title: PropTypes.string,
 	titleColor: PropTypes.string,

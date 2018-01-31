@@ -46,7 +46,8 @@ const ImageItem = ({imageUrl, altImageUrl, title, titleColor, backgroundColor, w
 		border: borderType,
 	};
 	let imageStyle = {
-		width: "100%",
+		maxWidth: "100%",
+		height: "auto"
 	};
 	let titleStyle = {
 		color: titleColor,

@@ -17,7 +17,7 @@ import VisibleShoppingList from '../containers/VisibleShoppingList'
 import RecipeFooter from './RecipeFooter'
 import AddRecipe from '../containers/AddRecipe'
 import AddShoppingItem from '../containers/AddShoppingItem'
-import {clearCompletedShoppingItems, clearShoppingList} from '../actions'
+import {clearCompletedShoppingItems, clearShoppingList, openHeroContainer} from '../actions'
 
 let myDispatch;
 
@@ -46,6 +46,9 @@ const Home = props => {
 			<VisibleTodoList />
 			<TodoFooter />
 			<button onClick={() => props.changePage()}>Go to about page via redux</button>
+			<button onClick={() => props.testOpenHeroAction('DumbHero')}>Test Open Hero Action</button>
+			<button onClick={() => props.testLaunchHero('DumbHero')}>Test Launch Hero</button>
+			<button onClick={() => props.testLaunchMDP()}>Test Launch MDP Container</button>
 		</div>
 	);
 };
@@ -57,7 +60,10 @@ const mapDispatchToProps = dispatch => {
 	myDispatch = dispatch;
 	return bindActionCreators({
 		changePage: () => push('/about-us'),
-		gotoCreateRecipe: () => push('/create-recipe-form')
+		gotoCreateRecipe: () => push('/create-recipe-form'),
+		testLaunchHero: () => push('/hero-test'),
+		testLaunchMDP: () => push('/mdp-test'),
+		testOpenHeroAction: (title) => openHeroContainer(title),
 	}, dispatch);
 };
 /**

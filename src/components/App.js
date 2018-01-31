@@ -16,7 +16,8 @@ import CreateRecipeForm from './CreateRecipeForm'
 import RecipeGalleryContainer from '../containers/RecipeGalleryContainer'
 import HeroContainer from '../containers/HeroContainer'
 import PillButtonContainer from '../containers/PillButtonContainer'
-import ImageRowTestContainer from "../containers/ImageRowTestContainer";
+import ImageRowTestContainer from "../containers/ImageRowTestContainer"
+import MDPTestContainer from "../containers/MDPTestContainer"
 
 const App = () => (
 	<div>
@@ -39,6 +40,8 @@ const App = () => (
 			<Link to="/hero-test">Hero Test</Link>
 			|
 			<Link to="/pill-test">Pill Test</Link>
+			|
+			<Link to="/mdp-test">MDPTest</Link>
 		</header>
 		<main>
 			<Route exact path="/" component={Home}/>
@@ -49,9 +52,12 @@ const App = () => (
 			<Route exact path="/edit-recipe-form" component={EditRecipeContainer}/>
 			<Route exact path="/recipe-gallery" component={RecipeGalleryContainer}/>
 			<Route exact path="/image-row-test" component={ImageRowTestContainer}/>
-			<Route exact path="/hero-test" component={HeroContainer}/>
+			<Route exact path="/hero-test" render={(props) => (<HeroContainer {...props} pass_to_page_content={'hi'}/>)}/>
 			<Route exact path="/pill-test" component={PillButtonContainer}/>
+			<Route exact path="/mdp-test" component={MDPTestContainer}/>
 		</main>
 	</div>
 );
 export default App;
+
+//			<Route exact path="/hero-test" component={HeroContainer}/>

@@ -4,7 +4,9 @@
  * Copyright (c) 2017 Kelvin Ishigo
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
-import {RecipeTypes, ShoppingTypes, IngredientTypes} from './ActionTypes';
+import {RecipeTypes, ShoppingTypes, IngredientTypes, TestNewTypes} from './ActionTypes';
+import {TestNewTypesMock} from '../tests/TestNewTypes'
+import {HeroTestData} from '../tests/TestNewTypesTestData'
 
 let todoId = 0;
 let recipeId = 0;
@@ -165,5 +167,14 @@ export const completeIngredientItem = id => {
 	return {
 		type: IngredientTypes.COMPLETE_ITEM,
 		id
+	}
+};
+
+// Test actions for new stuff
+export const openHeroContainer = (heroName) => {
+	// getHeroJson is async, passed success, error
+	return {
+		type: TestNewTypes.OPEN_HERO_CONTAINER,
+		heroName: heroName
 	}
 };

@@ -11,6 +11,7 @@ import shoppingVisibilityFilter from './shoppingVisibilityFilter'
 import recipes from './recipes'
 import shoppingItems from './shopping'
 import ingredients from './ingredients'
+import hero from './hero'
 import { routerReducer } from 'react-router-redux'
 /**
  * As I barely grok this, each partial reducer specifies a part of the total state shape
@@ -26,6 +27,7 @@ const recipeApp = combineReducers({
 	visibilityFilter,
 	shoppingVisibilityFilter,
 	ingredients,
+	hero,
 	routing: routerReducer
 });
 

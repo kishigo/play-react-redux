@@ -11,7 +11,7 @@ import ImageItem from "./ImageItem";
 /**
  * @brief Presentational component contains either FormattedTextItem or ImageItem, can be part of RowOfCellItems
  * @param childComponent - passed in json to define react component
- * @param id - unique for this item
+ * @param id - unique string id for this item
  * @param margin - distance between cells = margin/2
  * @param onClickFn - passed in click handler
  * @param title - string title
@@ -68,7 +68,7 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 /**
  * Defines the required props shape
  * @type {{childComponent: PropTypes.object.isRequired}}
- * @type {{id: PropTypes.number.isRequired}}
+ * @type {{id: PropTypes.string.isRequired}}
  * @type {{onClickFn: PropTypes.func.isRequired}}
  * @type {{title: PropTypes.string.isRequired}}
  * @type {{titleColor: PropTypes.string.isRequired}}
@@ -79,7 +79,7 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
  */
 CellItem.propTypes = {
 	childComponent: PropTypes.object.isRequired,
-	id: PropTypes.number.isRequired,
+	id: PropTypes.string.isRequired,
 	margin: PropTypes.number,
 	onClickFn: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,

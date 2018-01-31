@@ -45,13 +45,14 @@ let initialState = {todos:[
 	ingredients:[
 		{id: ingredient_1, name: 'eggs', qty: '18', selected: false, type: 'dairy'},
 		{id: ingredient_2, name: 'boneless skinless chicken breast', qty: '1 lb', selected: false, type: 'meat'}],
+	hero: {},
 	visibilityFilter: "SHOW_ALL"};
 /**
  * Allows explicit configuration of store.
  * @returns {*}
  */
 export const configureStore = () => {
-	let store = createStore(recipeApp, initialState,composedEnhancers);
+	let store = createStore(recipeApp, initialState, composedEnhancers);
 	console.log(store.getState());
 	return store;
 };

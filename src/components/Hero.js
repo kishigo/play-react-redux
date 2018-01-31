@@ -18,7 +18,7 @@ const Hero = ({ heroImage, backgroundColor, title}) => {
 	// CSS Styling.  There is some cruft in the style to help align
 	var backgroundStyle = {
 		width: "100%",
-		height: "400px",
+		height: "100%",
 		backgroundImage: "url(" + heroImage + ")",
 		backgroundPosition: "center",
 		backgroundRepeat: "no-repeat",

@@ -6,6 +6,8 @@
  */
 import React from 'react'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import Hero from '../components/Hero'
 import PillButton from "../components/PillButton";
 import Synopsis from "../components/Synopsis";
@@ -15,6 +17,9 @@ import FormattedText from "../components/FormattedTextItem";
 import CellItem from "../components/CellItem";
 import ImageItem from "../components/ImageItem";
 import RowOfCellItems from "../components/RowOfCellItems";
+import MDPTest from "../components/MDPTest";
+import MDPTestContainer from "./MDPTestContainer";
+import {openHeroContainer} from "../actions";
 
 const textBodyText = "aeij sinosiifosfjein o osei\nfosijoim siseofjjfiseifj   fisfijsoef";
 const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -29,6 +34,9 @@ Sed lorem libero, semper eget risus ac, suscipit dapibus dui.
 
 lorem@example.com
 `;
+
+let myDispatch;
+
 const HeroContainer = (props) => {
 	// Just goofing around with overlaying div on top
 	var testStyle = {
@@ -81,7 +89,22 @@ const HeroContainer = (props) => {
 		}
 	];
 
+	// There is some implicit structure but most of the page is data driven
+	// Required: hero image, button stack
+	// Optional: one or more rows
+	// Since we do not exactly know the inbound data format, we will have a mapping function to create a palatable array
+
+	let cleanState = () => {
+		return props.hero;
+	};
+
+	let cleanedState = cleanState();
+
+	// assert that we have some state
+
+
 	return <div>
+		<MDPTestContainer/>
 		<Hero heroImage={'MA_Header_Logo.png'} backgroundColor={'black'}/>
 		{/*<div style={ testStyle }>Hello</div>*/}
 		<PillButton onClickFn={testOnClick} title={'Testing 1 2 3'} titleColor={'gray'} width={200}
@@ -95,15 +118,32 @@ const HeroContainer = (props) => {
 			<Synopsis title={"Dummy Title"} textBody={textBodyText} textColor={"gray"} backgroundColor={"black"}/>
 			<FormattedText text={sampleText} textColor={"white"} font={"any"} backgroundColor={"gray"}/>
 		</div>
-		<RowOfCellItems cellItems={testRowOfCellItems} h={"300px"} title={"ROW TITLE"} titleColor={"pink"} offset={0} gap={10} visibleItemCount={5} currentSelectedItemIndex={1}/>
+		<RowOfCellItems id={'TestRow1'} cellItems={testRowOfCellItems} h={"300px"} title={"ROW TITLE"} titleColor={"pink"} offset={0} gap={10} visibleItemCount={5} currentSelectedItemIndex={1}/>
 	</div>
 };
 
-//		<CellItem childComponent={testFormattedTextItem} id={0} onClickFn={testOnClick} title={"FOOBAR1"} titleColor={"red"}
-//		          width={200} height={300} backgroundColor={"gray"} selected={true}/>
-//		<CellItem childComponent={testImageItem} id={1} onClickFn={testOnClick} title={"FOOBAR2"} titleColor={"green"} width={200}
-//		          height={300} backgroundColor={"gray"} selected={false}/>
+const mapStateToProps = state => {
+	return {
+		hero: {...state.hero}
+	}
+};
 
-//		<RowOfCellItems cellItems={testRowOfCellItems} visibleItemCount={5} currentSelectedItemIndex={1}/>
+const mapDispatchToProps = dispatch => {
+	myDispatch = dispatch;
+	return bindActionCreators({}, dispatch);
+};
 
-export default HeroContainer
+// export const mySpecialContainerCreator = connect(
+// 	mapStateToProps,
+// 	mapDispatchToProps
+// );
+
+// mySpecialContainerCreator(MDPTest);
+// mySpecialContainerCreator(MDPTestContainer);
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(HeroContainer)
+
+// export default mySpecialContainerCreator(HeroContainer)
