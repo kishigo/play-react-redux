@@ -13,7 +13,7 @@ import ImageItem from "./ImageItem";
  * @param childComponent - passed in json to define react component
  * @param id - unique string id for this item
  * @param margin - distance between cells = margin/2
- * @param onClickFn - passed in click handler
+ * @param onClickFn - passed in click handler (optional)
  * @param title - string title
  * @param titleColor - foreground title color
  * @param width - cell width in pixels
@@ -28,6 +28,10 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 	if (margin === undefined) {
 		margin = 10;
 	}
+	// if on
+	if (onClickFn === undefined) {
+		onClickFn = nullClickFn;
+	}
 	let marginDistance = margin + "px";
 	let cellStyle = {
 		width: width,
@@ -41,6 +45,7 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 	let titleStyle = {
 		color: titleColor
 	};
+	let nullClickFn = () => {};
 	/**
 	 * Expect a json object with a type field specifying which type of component will be created
 	 * @param childComponent - json defining the component
@@ -81,7 +86,7 @@ CellItem.propTypes = {
 	childComponent: PropTypes.object.isRequired,
 	id: PropTypes.string.isRequired,
 	margin: PropTypes.number,
-	onClickFn: PropTypes.func.isRequired,
+	onClickFn: PropTypes.func,
 	title: PropTypes.string.isRequired,
 	titleColor: PropTypes.string.isRequired,
 	width: PropTypes.number.isRequired,

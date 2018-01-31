@@ -6,6 +6,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
+import ImageItem from "./ImageItem";
 
 /**
  *
@@ -28,7 +29,13 @@ const TitleBlock = ({posterArt, title, year, duration, rating, description, dire
 
 	};
 	return (
-		<div>TitleBlock</div>
+		<div className='rowC'>TitleBlock
+			<ImageItem imageUrl={posterArt}/>
+			{/*TitleControlBlock*/}
+			{/*Director*/}
+			{/*CastAndCrew*/}
+			{/**/}
+		</div>
 	)
 };
 

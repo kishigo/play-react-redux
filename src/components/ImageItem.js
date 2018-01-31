@@ -66,6 +66,7 @@ const ImageItem = ({imageUrl, altImageUrl, title, titleColor, backgroundColor, w
 
 ImageItem.propTypes = {
 	imageUrl: PropTypes.string.isRequired,
+	altImageUrl: PropTypes.string,
 	title: PropTypes.string,
 	titleColor: PropTypes.string,
 	backgroundColor: PropTypes.string,
